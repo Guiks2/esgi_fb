@@ -63,7 +63,7 @@
             $request = new FacebookRequest( $session,"GET","/me");
             $response = $request->execute();
             $user = $response->getGraphObject(GraphUser::className());
-            echo "Bonjour ".$user->getName();
+            echo "Bonjour ".$user->getName()." !!";
         }else{
             $loginUrl = $helper->getLoginUrl();
             echo "<a href='".$loginUrl."'>Se connecter</a>";
