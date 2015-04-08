@@ -18,13 +18,12 @@
     
     $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
     
-    //SI les variables de sessions existent et que $_SESSION['fb_token'] existe
-    // alors je veux créer mon utilisateur à partir de cette session
+    /*
+     * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
+     */
     if( isset($_SESSION) && isset($_SESSION['fb_token']) ){
         $session = new FacebookSession($_SESSION['fb_token']);
-    }
-    //Sinon j'affiche le lien de connection
-    else {
+    } else {
         $session = $helper->getSessionFromRedirect();
     }
 ?>
@@ -61,9 +60,9 @@
     <?php
         if($session){
             $_SESSION['fb_token'] = (string) $session->getAccessToken();
-            $request_user = new FacebookRequest( $session,"GET","/me");
-            $request_user_executed = $request_user->execute();
-            $user = $request_user_executed->getGraphObject(GraphUser::className());
+            $request = new FacebookRequest( $session,"GET","/me");
+            $response = $request->execute();
+            $user = $response->getGraphObject(GraphUser::className());
             echo "Bonjour ".$user->getName();
         }else{
             $loginUrl = $helper->getLoginUrl();
