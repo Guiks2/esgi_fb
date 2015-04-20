@@ -58,12 +58,20 @@
     <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
 
     <?php
+
         if($session){
             $_SESSION['fb_token'] = (string) $session->getAccessToken();
             $request = new FacebookRequest( $session,"GET","/me");
             $response = $request->execute();
             $user = $response->getGraphObject(GraphUser::className());
             echo "Bonjour ".$user->getName()." !!";
+            
+            $request = new FacebookRequest($session,'GET','/me/photos');
+            $response = $request->execute();
+            $photos = $response->getGraphObject();
+            echo($user->getId());
+            print_r($response);
+            print_r($photos);
         }else{
             $loginUrl = $helper->getLoginUrl();
             echo "<a href='".$loginUrl."'>Se connecter</a>";
