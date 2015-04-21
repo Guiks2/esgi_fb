@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: "Amatic";
+	src:  url('../fonts/AmaticSC-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: "AmaticBold";
+	src:  url('../fonts/Amatic-Bold.ttf') format('truetype');
+}
+
+html, 
+body {
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background: url('../img/bg.jpg') center no-repeat fixed;
+	background-size: cover;
+	font-family: "Amatic";
+	color: white;
+}
+
+#container-parent {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 60px;
+	padding-bottom: 50px;
+	background: rgba(0,0,0,0.6);
+}
+
+#container-child-1 {
+	padding-left: 5%;
+	padding-right: 5%;
+	display: table;
+	margin-top: 20px;
+	margin-left: 64px;
+	color: white;
+}
+
+#container-child-2 {
+	width: 100%;
+	text-align: center;
+}
+
+#pic,
+#next {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#pic {
+	width: 280px;
+}
+
+#next {
+	padding-right: 50px;
+}
+
+#accroche {
+	font-size: 64pt;
+	font-family: "AmaticBold";
+}
+
+#description-concours {
+	font-size: 52pt;
+}
+
+.red-button {
+	cursor: pointer;
+	color: white;
+	font-size: 22pt;
+	padding: 15px 80px;
+	background-color: rgb(155, 28, 31);
+}
+
+.red-button:hover {
+	background-color: rgb(127,0,3);
+}
