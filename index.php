@@ -161,23 +161,15 @@ function getPhotos($session, $id) {
          }*/
          
         if($_POST['submit_upload_photo'] == '1'){
-            /*$uploadfile = getcwd().'\\uploads\\'.basename($_FILES['photo']['name']);
-            move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
-            $full_image_path = realpath($uploadfile);*/
-            print_r($_FILES);
-            //$args['image'] = '@'.$full_image_path;
-            $args['url'] = $full_image_path;
             $curlFile = array('source' => new CURLFile($_FILES['photo']['tmp_name'], $_FILES['photo']['type']));
-            
             try {
                 $up = new FacebookRequest ($session, 'POST', '/'.$_POST['album_id'].'/photos', $curlFile);
                 $up->execute()->getGraphObject("Facebook\GraphUser");
-               // $up = (new FacebookRequest ($session, 'POST', '/'.$_POST['album_id'].'/photos', $args))->execute()->getGraphObject("Facebook\GraphUser");
             }
             catch (FacebookApiException $e) {
                 error_log($e);
             }
-          }
+        }
 
     } else {
         // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
@@ -189,7 +181,7 @@ function getPhotos($session, $id) {
     }
     ?>
     
-    <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="index.php">
+    <form class="form-horizontal" enctype=$"multipart/form-data" method="POST" action="index.php">
       <input type="hidden" name="album_id" value="<?php echo $album_id ?>" />
       <input id="photo" name="photo" class="input-file" type="file">
       <button id="submit_upload_photo" name="submit_upload_photo" value="1" type="submit" class="btn btn-primary">Upload</button>
