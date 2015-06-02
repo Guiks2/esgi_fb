@@ -13,9 +13,8 @@ const APPID = "764343183684137";
 const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
-
 //$helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
-$helper = new FacebookRedirectLoginHelper('http://localhost/');
+$helper = new FacebookRedirectLoginHelper('http://localhost/esgi_fb/');
 
 /*
  * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
@@ -25,9 +24,16 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 } else {
     $session = $helper->getSessionFromRedirect();
 }
-
-function uploadPhoto(){
-
+        
+function uploadPhoto($session){
+    $curlFile = array('source' => new CURLFile($_FILES['photo']['tmp_name'], $_FILES['photo']['type']));
+    try {
+        $up = new FacebookRequest ($session, 'POST', '/'.$_POST['album_id'].'/photos', $curlFile);
+        $up->execute()->getGraphObject("Facebook\GraphUser");
+    }
+    catch (FacebookApiException $e) {
+        error_log($e);
+    }
 }
 
 function createAlbum($name, $session, $id){
@@ -65,23 +71,20 @@ function getAlbums($session, $id){
     return $albums;
 }
 
-function getPhotos($session, $id) {
+function getPhotos($session, $id_user) {
     
-    $albums = getAlbums($session, $id);
-    
+    $albums = getAlbums($session, $id_user);
     for ($i = 0; null !== $albums->getProperty('data')->getProperty($i); $i++) {
         $album = $albums->getProperty('data')->getProperty($i);
-
         $request = new FacebookRequest($session, 'GET', '/'.$album->getProperty('id').'/photos');
         $response = $request->execute();
         $photos = $response->getGraphObject();
 
         for ($j = 0; null !== $photos->getProperty('data')->getProperty($j); $j++) {
             $photo[] = $photos->getProperty('data')->getProperty($j);
-            //echo "<img src='{$photo->getProperty("source")}' />", "<br />";
         }
     }
-    return $photos;
+    return $photo;
 }
 
 ?>
@@ -151,39 +154,45 @@ function getPhotos($session, $id) {
         $response = $request->execute();
         $user = $response->getGraphObject(GraphUser::className());
         echo "Bonjour " . $user->getName() . " !!";
-
+        
+        
         $albums = getAlbums($session, 'me');
-        $album_id = $albums->getProperty('data')->getProperty(0)->getProperty('id');
-        /*
-         $listPhotos = getPhotos($session, 'me');
-         foreach($listPhotos as $photo){
-         echo "<img src='{$photo->getProperty("source")}' />", "<br />";
-         }*/
+        
+        /* Affichage de toutes les photos
+        $listPhotos = getPhotos($session, 'me');
+        foreach($listPhotos as $photo){
+            echo "<img src='{$photo->getProperty("source")}' />", "<br />";
+        }*/
          
+
+
+
+
         if($_POST['submit_upload_photo'] == '1'){
-            $curlFile = array('source' => new CURLFile($_FILES['photo']['tmp_name'], $_FILES['photo']['type']));
-            try {
-                $up = new FacebookRequest ($session, 'POST', '/'.$_POST['album_id'].'/photos', $curlFile);
-                $up->execute()->getGraphObject("Facebook\GraphUser");
-            }
-            catch (FacebookApiException $e) {
-                error_log($e);
-            }
+            uploadPhoto($session);
         }
 
     } else {
         // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-        $params = array(scope => 'read_stream,publish_stream,publish_actions, offline_access, user_photos, user_status,user_photos','photo_upload'
-        //redirect_uri => 'http://localhost/'
+        $params = array('scope' => 'read_stream,publish_actions, user_photos, user_status,user_photos'#,publish_stream, offline_access', 'photo_upload'
+        //redirect_uri => 'http://localhost/esgi_fb/'
         );
         $loginUrl = $helper->getLoginUrl($params);
         echo "<a href='" . $loginUrl . "'>Se connecter</a>";
     }
     ?>
     
-    <form class="form-horizontal" enctype=$"multipart/form-data" method="POST" action="index.php">
-      <input type="hidden" name="album_id" value="<?php echo $album_id ?>" />
+    <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="index.php">
       <input id="photo" name="photo" class="input-file" type="file">
+      <select name="album_id" id="album_id">
+          <?php
+            for ($i = 0; null !== $albums->getProperty('data')->getProperty($i); $i++) {
+                $album_id = $albums->getProperty('data')->getProperty($i)->getProperty('id');
+                $album_name = $albums->getProperty('data')->getProperty($i)->getProperty('name');
+                echo('<option value='.$album_id.'>'.$album_name.'</option>');
+            }
+          ?>
+      </select>
       <button id="submit_upload_photo" name="submit_upload_photo" value="1" type="submit" class="btn btn-primary">Upload</button>
     </form>
   </body>
