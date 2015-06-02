@@ -20,7 +20,7 @@
 
             <div id="next">
             	<p id="description-concours">
-                	Participez en postant une photo de votre plus belle pizza ainsi que sa recette et tentez de gagner votre pizza hebdomadaire pendant 3 mois* !
+                	Participez en postant une photo de votre plus belle pizza, la plus apétissante ou la plus originale et tentez de gagner votre pizza hebdomadaire pendant 3 mois* !
             	</p>
             </div>
         </div>
