@@ -29,7 +29,7 @@ body {
 }
 
 #container-parent {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	margin-top: 60px;
 	padding-bottom: 50px;
@@ -39,38 +39,44 @@ body {
 #container-child-1 {
 	padding-left: 5%;
 	padding-right: 5%;
-	display: table;
 	margin-top: 20px;
-	margin-left: 64px;
 	color: white;
 }
 
-#container-child-2 {
+#container-child-2,
+#container-child-3 {
 	width: 100%;
 	text-align: center;
+	margin-bottom: 35px;
 }
 
-#pic,
-#next {
+
+#header {
+	padding-top: 15px;
+	display: table;
+}
+
+img {
 	display: table-cell;
 	vertical-align: middle;
 }
 
-#pic {
-	width: 280px;
-}
-
-#next {
-	padding-right: 50px;
+hr {
+	width: 80%;
+	border-color: rgba(255,255,255,0.4);
 }
 
 #accroche {
-	font-size: 64pt;
+	font-size: 32pt;
 	font-family: "AmaticBold";
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 30px;
 }
 
-#description-concours {
-	font-size: 52pt;
+#description-concours,
+#description-vote {
+	font-size: 25px;
 }
 
 .red-button {
@@ -84,3 +90,19 @@ body {
 .red-button:hover {
 	background-color: rgb(127,0,3);
 }
+
+.photo {
+	display: inline-block;
+	margin: 5px;
+	height: 100px;
+	width: 160px;
+	border: dashed 1px white;
+	cursor: pointer;
+	transition: background-color 0.3s linear;
+	background-color: transparent;
+}
+
+.photo:hover {
+	transition: background-color 0.3s linear;
+	background-color: rgba(0,0,0,0.5);
+};
