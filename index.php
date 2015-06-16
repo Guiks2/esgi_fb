@@ -24,6 +24,7 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 } else {
     $session = $helper->getSessionFromRedirect();
 }
+
         
 function uploadPhoto($session, $id_user){
     if($_POST['album_id'] == -1){
@@ -56,8 +57,6 @@ function createAlbum($name, $session, $id){
     
     // if the album is not present, create the album
     if ($album_id == 'blank') {
-        //$graph_url = 'https://graph.facebook.com/'.$id.'/albums?'."access_token=".$user;
-    
         $album_data = array('name' => $_POST['new_album_name'], 'message' => $album_description, );
     
         $new_album = new FacebookRequest ($session, 'POST', '/'.$id.'/albums', $album_data);
@@ -160,9 +159,7 @@ function getPhotos($session, $id_user, $album_id) {
         $_SESSION['fb_token'] = (string)$session->getAccessToken();
         $request = new FacebookRequest($session, "GET", "/me");
         $response = $request->execute();
-        $user = $response->getGraphObject(GraphUser::className());
-        echo "Bonjour " . $user->getName() . " !!";
-        
+        $user = $response->getGraphObject(GraphUser::className());        
         
         $albums = getAlbums($session, 'me');
         
