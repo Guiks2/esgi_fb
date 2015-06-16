@@ -1,3 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="css/main-style.css" rel="stylesheet" type="text/css">
+<script src="js/fittext.js"></script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId : '764343183684137',
+            xfbml : true,
+            version : 'v2.3'
+        });
+    }; ( function(d, s, id) {
+            var js,
+                fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
+<title>Concours photo Swag Pizza</title>
+</head>
+
 <?php error_reporting(E_ALL);
 ini_set("display_errors", 1);
 session_start();
@@ -13,8 +41,8 @@ const APPID = "764343183684137";
 const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
-//$helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
-$helper = new FacebookRedirectLoginHelper('http://localhost/esgi_fb/');
+$helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
+//$helper = new FacebookRedirectLoginHelper('http://localhost/esgi_fb/');
 
 /*
  * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
@@ -25,97 +53,63 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
     $session = $helper->getSessionFromRedirect();
 }
 
-
+if ($session) {
+    $_SESSION['fb_token'] = (string)$session->getAccessToken();
+} else {
+    // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
+    $params = array('scope' => 'user_posts',#,publish_stream, offline_access', 'photo_upload'
+    'redirect_uri' => 'https://esgi-fb.herokuapp.com/'
+    );
+    $loginUrl = $helper->getLoginUrl($params);
+    exit();
+}
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='UTF-8'>
-    <title>ESGI FB</title>
-    <meta name='Description' content='description page'>
-    <script>
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId : '764343183684137',
-				xfbml : true,
-				version : 'v2.3'
-			});
-		}; ( function(d, s, id) {
-				var js,
-				    fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) {
-					return;
-				}
-				js = d.createElement(s);
-				js.id = id;
-				js.src = "//connect.facebook.net/fr_FR/sdk.js";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-    </script>
-  </head>
-  <body>
-    <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+<body>
+	<div class="container-parent">
+    	<div id="container-child-1" class="container">
+       		<div id="header">
+        		<img src="img/swagpizza.png" width="180" height="160"/>
+            
+            	<p id="accroche">
+            		CONCOURS PHOTO SWAG PIZZA
+            	</p>
+            </div>
 
-    <?php
-
-    if ($session) {
-        $_SESSION['fb_token'] = (string)$session->getAccessToken();
-        $request = new FacebookRequest($session, "GET", "/me");
-        $response = $request->execute();
-        $user = $response->getGraphObject(GraphUser::className());        
+            <div id="next">
+            	<p id="description-concours">
+                	Participez en postant une photo de votre plus belle pizza, la plus apétissante ou la plus originale et tentez de gagner votre pizza hebdomadaire pendant 3 mois* !
+            	</p>
+            </div>
+        </div>
         
-        $albums = getAlbums($session, 'me');
-        
-        // Affichage de toutes les photos
+        <div id="container-child-2" class="container">
+        	<a href="contest.php" class="red-button">JE PARTICIPE !</a>
+        </div>
 
+        <hr>
 
-        if($_POST['submit_upload_photo'] == '1'){
-            uploadPhoto($session, 'me');
-        }        
-        if($_POST['show_photos'] == '1'){
-            $listPhotos = getPhotos($session, 'me', $_POST['album_id']);
-            foreach($listPhotos as $photo){
-                echo "<img src='{$photo->getProperty("source")}' />", "<br />";
-            }
-        }
+         <div id="container-child-3" class="container">
+            <p id="description-vote">
+                 Classement actuel
+            </p>
+            <div id="photos-candidats">
+                <div class="photo"></div>
+                <div class="photo"></div>
+                <div class="photo"></div>
+                <br/>
+                <div class="photo"></div>
+                <div class="photo"></div>
+                <div class="photo"></div>
+                <br/>
+                <div class="photo"></div>
+                <div class="photo"></div>
+                <div class="photo"></div>
+            </div>
+        </div>
+    </div>
+    <center>* En participant à ce concours, je certifie à l'équipe Swag Pizza d'avoir au moins 18 ans ou d'avoir un accord parental. Offre valable dans la limite de la bonne volonté de l'équipe Swag Pizza.</center>
 
-    } else {
-        // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-        $params = array('scope' => 'read_stream,publish_actions, user_photos, user_status,user_photos'#,publish_stream, offline_access', 'photo_upload'
-        //redirect_uri => 'http://localhost/esgi_fb/'
-        );
-        $loginUrl = $helper->getLoginUrl($params);
-        echo "<a href='" . $loginUrl . "'>Se connecter</a>";
-    }
-    ?>
-    
-    <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="index.php">
-      <input id="photo" name="photo" class="input-file" type="file">
-      <select name="album_id" id="album_id">
-          <?php
-            for ($i = 0; null !== $albums->getProperty('data')->getProperty($i); $i++) {
-                $album_id = $albums->getProperty('data')->getProperty($i)->getProperty('id');
-                $album_name = $albums->getProperty('data')->getProperty($i)->getProperty('name');
-                echo('<option value='.$album_id.'>'.$album_name.'</option>');
-            }
-          ?>
-          <option value='-1'>Nouvel Album</option>
-      </select>
-      <input id="new_album_name" name="new_album_name" class="input-file" type="text">
-      <button id="submit_upload_photo" name="submit_upload_photo" value="1" type="submit" class="btn btn-primary">Upload</button>
-    </form>
-    
-    <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="index.php">
-      <select name="album_id" id="album_id">
-          <?php
-            for ($i = 0; null !== $albums->getProperty('data')->getProperty($i); $i++) {
-                $album_id = $albums->getProperty('data')->getProperty($i)->getProperty('id');
-                $album_name = $albums->getProperty('data')->getProperty($i)->getProperty('name');
-                echo('<option value='.$album_id.'>'.$album_name.'</option>');
-            }
-          ?>
-      </select>
-      <button id="show_photos" name="show_photos" value="1" type="submit" class="btn btn-primary">Show</button>
-    </form>
-  </body>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
 </html>
