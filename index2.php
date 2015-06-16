@@ -4,8 +4,66 @@
 <meta charset="utf-8">
 <link href="css/main-style.css" rel="stylesheet" type="text/css">
 <script src="js/fittext.js"></script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId : '764343183684137',
+            xfbml : true,
+            version : 'v2.3'
+        });
+    }; ( function(d, s, id) {
+            var js,
+                fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
 <title>Concours photo Swag Pizza</title>
 </head>
+
+<?php error_reporting(E_ALL);
+ini_set("display_errors", 1);
+session_start();
+
+require __DIR__ . "/facebook-php-sdk-v4-4.0-dev/autoload.php";
+
+use Facebook\FacebookSession;
+use Facebook\FacebookRedirectLoginHelper;
+use Facebook\FacebookRequest;
+use Facebook\GraphUser;
+
+const APPID = "764343183684137";
+const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
+
+FacebookSession::setDefaultApplication(APPID, APPSECRET);
+$helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
+//$helper = new FacebookRedirectLoginHelper('http://localhost/esgi_fb/');
+
+/*
+ * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
+ */
+if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
+    $session = new FacebookSession($_SESSION['fb_token']);
+} else {
+    $session = $helper->getSessionFromRedirect();
+}
+
+if ($session) {
+    $_SESSION['fb_token'] = (string)$session->getAccessToken();
+} else {
+    // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
+    $params = array('scope' => 'read_stream,publish_actions, user_photos, user_status,user_photos'#,publish_stream, offline_access', 'photo_upload'
+    //redirect_uri => 'http://localhost/esgi_fb/'
+    );
+    $loginUrl = $helper->getLoginUrl($params);
+    echo "<a href='" . $loginUrl . "'>Se connecter</a>";
+}
+?>
 
 <body>
 	<div id="container-parent">
