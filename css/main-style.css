@@ -50,6 +50,9 @@ body {
 	margin-bottom: 35px;
 }
 
+#container-child-2 a {
+	font-size: 28px;
+}
 
 #header {
 	padding-top: 15px;
@@ -82,7 +85,6 @@ hr {
 .red-button {
 	cursor: pointer;
 	color: white;
-	font-size: 22pt;
 	padding: 15px 80px;
 	background-color: rgb(155, 28, 31);
 }
@@ -91,18 +93,93 @@ hr {
 	background-color: rgb(127,0,3);
 }
 
+#photos-candidats {
+	position: relative;
+	width: 100%;
+}
+
 .photo {
 	display: inline-block;
 	margin: 5px;
 	height: 100px;
-	width: 160px;
+	width: 170px;
 	border: dashed 1px white;
 	cursor: pointer;
 	transition: background-color 0.3s linear;
 	background-color: transparent;
+	text-align: center;
+	line-height: 100px;
 }
 
 .photo:hover {
 	transition: background-color 0.3s linear;
 	background-color: rgba(0,0,0,0.5);
-};
+}
+
+/***************************************************/
+#ask-post {
+	position: absolute;
+	top: 280px;
+	margin-left: 50px;
+	font-size: 24pt;
+	transform: rotate(-10deg);
+}
+
+.container-parent {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 60px;
+	padding-bottom: 50px;
+	background: rgba(0,0,0,0.6);
+}
+
+.contest-container {
+	min-height: 400px;
+}
+
+#arrow-participate {
+	margin-left: 130px;
+	margin-top: -10px;
+	width: 100px;
+	height: auto;
+	transform: rotate(50deg);
+}
+
+hr#contest-separator {
+	margin-top: 190px;
+}
+
+#vote-zone {
+	text-align: center;
+}
+
+#load-more {
+	margin: 0 auto;
+	margin-top: 15px;
+	padding: 10px 100px;
+	width: 313px;
+	background-color: rgba(0,0,0,0.2);
+}
+
+
+#hide-button {
+	height: 0;
+	overflow: hidden;
+}
+
+#global-browse-zone {
+	position: absolute;
+	left: 260px;
+	top: 55px;
+	transform: rotate(10deg);
+	font-size: 18px;
+	text-align: center;
+	width: 265px;
+}
+
+.button-upload {
+	float: left;
+	padding: 10px 20px;
+	cursor: pointer;
+	width: 230px;
+}

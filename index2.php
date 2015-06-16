@@ -66,7 +66,9 @@ if ($session) {
 ?>
 
 <body>
-	<div id="container-parent">
+
+<body>
+	<div class="container-parent">
     	<div id="container-child-1" class="container">
        		<div id="header">
         		<img src="img/swagpizza.png" width="180" height="160"/>
@@ -84,14 +86,14 @@ if ($session) {
         </div>
         
         <div id="container-child-2" class="container">
-        	<a href="#" class="red-button">JE PARTICIPE !</a>
+        	<a href="contest.php" class="red-button">JE PARTICIPE !</a>
         </div>
 
         <hr>
 
          <div id="container-child-3" class="container">
             <p id="description-vote">
-                 Ou votez pour votre pizza préférée ci-dessous !
+                 Classement actuel
             </p>
             <div id="photos-candidats">
                 <div class="photo"></div>
@@ -109,5 +111,8 @@ if ($session) {
         </div>
     </div>
     <center>* En participant à ce concours, je certifie à l'équipe Swag Pizza d'avoir au moins 18 ans ou d'avoir un accord parental. Offre valable dans la limite de la bonne volonté de l'équipe Swag Pizza.</center>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
