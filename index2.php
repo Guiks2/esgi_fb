@@ -63,6 +63,12 @@ if ($session) {
     $loginUrl = $helper->getLoginUrl($params);
     echo "<a href='" . $loginUrl . "'>Se connecter</a>";
 }
+
+
+    $_SESSION['fb_token'] = (string)$session->getAccessToken();
+        $request = new FacebookRequest($session, "GET", "/me");
+        $response = $request->execute();
+        $user = $response->getGraphObject(GraphUser::className());       
 ?>
 
 <body>
