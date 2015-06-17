@@ -58,7 +58,9 @@ if(!empty($_SERVER['HTTP_ORIGIN'])){
         $session = $helper->getSessionFromRedirect();
     }
 }
-
+print_r($_SERVER);
+print_r('-------------------------------');
+print_r($_SERVER['HTTP_ORIGIN']);
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
 } else {
