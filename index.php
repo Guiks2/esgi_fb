@@ -36,12 +36,14 @@ use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
+use Facebook\FacebookCanvasLoginHelper;
 
 const APPID = "764343183684137";
 const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
+// Différenciation connexion site et canvas
 if(!empty($_SESSION['SERVER'])){
     $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
     if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
