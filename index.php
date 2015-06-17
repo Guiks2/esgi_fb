@@ -50,9 +50,9 @@ $helper = new FacebookRedirectLoginHelper('https://www.facebook.com/swagpizza/ap
  */
 if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
     $session = new FacebookSession($_SESSION['fb_token']);
-} else {
+}/* else {
     $session = $helper->getSessionFromRedirect();
-}
+}*/
 
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
