@@ -44,8 +44,11 @@ const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 // Différenciation connexion site et canvas
-if(!empty($_SESSION['SERVER'])){
+if($_SERVER['SERVER_NAME'] == 'esgi-fb.herokuapp.com'){
     $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
+    /*
+     * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
+     */
     if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
         $session = new FacebookSession($_SESSION['fb_token']);
     } else {
@@ -55,18 +58,7 @@ if(!empty($_SESSION['SERVER'])){
     $helper = new FacebookCanvasLoginHelper();
     $session = $helper->getSession();
 }
-print_r($_SERVER);
-//$helper = new FacebookRedirectLoginHelper('https://www.facebook.com/swagpizza/app_764343183684137');
-//$helper = new FacebookRedirectLoginHelper('http://localhost/esgi_fb/');
 
-/*
- * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
- */
-
-
- print_r($_SESSION);
- print_r('---------------');
- print_r($session);
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
 } else {
