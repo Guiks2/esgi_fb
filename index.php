@@ -48,17 +48,13 @@ $helper = new FacebookRedirectLoginHelper('https://www.facebook.com/swagpizza/ap
 /*
  * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
  */
-if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
-    $session = new FacebookSession($_SESSION['fb_token']);
-} else {
-    $session = $helper->getSessionFromRedirect();
-}
 
+    $session = new FacebookSession($_SESSION['fb_token']);
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-    $params = ['read_stream,publish_actions, user_photos, user_status'];
+    $params = ['read_stream, publish_actions, user_photos, user_status'];
     
     $loginUrl = $helper->getLoginUrl($params);
     echo "<script type='text/javascript'>top.location.href = '".$loginUrl."';</script>";
