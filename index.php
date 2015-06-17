@@ -48,21 +48,20 @@ $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
 /*
  * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
  */
-/*if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
+if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
     $session = new FacebookSession($_SESSION['fb_token']);
 } else {
     $session = $helper->getSessionFromRedirect();
-}*/
+}
 
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
-    $session = new FacebookSession($_SESSION['fb_token']);
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
     $params = ['read_stream, publish_actions, user_photos, user_status'];
     
     $loginUrl = $helper->getLoginUrl($params);
-    echo "<script type='text/javascript'>window.location.href = '".$loginUrl."';</script>";
+    echo "<script type='text/javascript'>top.location.href = '".$loginUrl."';</script>";
     exit();
 }
 ?>
