@@ -41,7 +41,8 @@ const APPID = "764343183684137";
 const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
-$helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
+//$helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
+$helper = new FacebookRedirectLoginHelper('https://www.facebook.com/swagpizza/app_764343183684137');
 //$helper = new FacebookRedirectLoginHelper('http://localhost/esgi_fb/');
 
 /*
