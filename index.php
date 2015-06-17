@@ -65,8 +65,10 @@ if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-    $params = ['read_stream, publish_actions, user_photos, user_status'];
-    
+    $params = 'scope' => ['read_stream, publish_actions, user_photos, user_status'];
+    if(!empty($_SERVER['HTTP_ORIGIN'])){
+        $params['canvas'] = 1;
+    }
     $loginUrl = $helper->getLoginUrl($params);
     echo "<script type='text/javascript'>top.location.href = '".$loginUrl."';</script>";
 }
