@@ -44,7 +44,10 @@ const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 // Différenciation connexion site et canvas
-if($_SERVER['SERVER_NAME'] == 'esgi-fb.herokuapp.com'){
+if(!empty($_SERVER['HTTP_ORIGIN'])){
+    $helper = new FacebookCanvasLoginHelper();
+    $session = $helper->getSession();
+} else {
     $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/');
     /*
      * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
@@ -54,11 +57,7 @@ if($_SERVER['SERVER_NAME'] == 'esgi-fb.herokuapp.com'){
     } else {
         $session = $helper->getSessionFromRedirect();
     }
-} else {
-    $helper = new FacebookCanvasLoginHelper();
-    $session = $helper->getSession();
 }
-print_r($_SERVER);
 
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
