@@ -55,7 +55,7 @@ if(!empty($_SESSION['SERVER'])){
     $helper = new FacebookCanvasLoginHelper();
     $session = $helper->getSession();
 }
-print_r($_SESSION);
+print_r($_SERVER);
 //$helper = new FacebookRedirectLoginHelper('https://www.facebook.com/swagpizza/app_764343183684137');
 //$helper = new FacebookRedirectLoginHelper('http://localhost/esgi_fb/');
 
