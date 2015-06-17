@@ -18,17 +18,18 @@
             	</p>
             </div>
         </div>
-        
-        <div id="ask-post" class="container">
-        	<span class="span-ask-post">Je poste ma photo participante</span>
-            <img id="arrow-participate" src="img/arrow.png" />
-        </div>
+        <div id="contest-container-child-2">
+            <div id="ask-post" class="container">
+            	<span class="span-ask-post">Je poste ma photo participante</span><br>
+                <img id="arrow-participate" src="img/arrow.png"/>
+            </div>
 
-        <div id="global-browse-zone">
-            <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
-            <div id="dynamic-upload-zone">
-                <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br><span id="ou">OU</span><br>
-                <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
+            <div id="global-browse-zone">
+                <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
+                <div id="dynamic-upload-zone">
+                    <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br>
+                    <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
+                </div>
             </div>
         </div>
         
