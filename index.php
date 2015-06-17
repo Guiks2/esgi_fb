@@ -58,7 +58,7 @@ if ($session) {
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
     $params = array('scope' => 'read_stream,publish_actions, user_photos, user_status,user_photos',#,publish_stream, offline_access', 'photo_upload'
-    'redirect_uri' => 'https://www.facebook.com/swagpizza/app_764343183684137'
+    'redirect_uri' => 'https://esgi-fb.herokuapp.com/index.php'
     );
     $loginUrl = $helper->getLoginUrl($params);
     echo "<script type='text/javascript'>top.location.href = '".$loginUrl."';</script>";
