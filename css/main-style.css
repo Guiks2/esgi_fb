@@ -123,6 +123,7 @@ hr {
 	margin-left: 50px;
 	font-size: 24pt;
 	transform: rotate(-10deg);
+	cursor: pointer;
 }
 
 .container-parent {
@@ -169,9 +170,8 @@ hr#contest-separator {
 
 #global-browse-zone {
 	position: absolute;
-	left: 260px;
-	top: 55px;
-	transform: rotate(10deg);
+	left: 360px;
+	top: 280px;
 	font-size: 18px;
 	text-align: center;
 	width: 265px;
@@ -182,4 +182,67 @@ hr#contest-separator {
 	padding: 10px 20px;
 	cursor: pointer;
 	width: 230px;
+}
+
+#default-choice {
+	float: left;
+	margin-left: 17px;
+	width: 200px;
+	padding: 5px 15px;
+	background-color: rgba(38,38,38,0.5);
+	color: white;
+	cursor: pointer;
+}
+
+#default-choice:hover {
+	background-color: rgba(38,38,38,0.7);
+}
+
+#option-list {
+	position: absolute;
+	margin-left: 17px;
+	margin-top: 34px;
+	padding: 5px 15px;
+	width: 200px;
+	background-color: rgba(38,38,38,0.7);
+	list-style: none;
+	display: none;
+	z-index: 5;
+}
+
+#option-list li:hover {
+	cursor: pointer;
+	background-color: rgba(127,0,1, 0.7);
+}
+
+#add-new-album {
+	position: absolute;
+	top: 90px;
+	left: 20px;
+	z-index: 1;
+}
+#add-new-album input {
+	margin-right: 5px;
+	padding: 5px 5px;
+	margin-top: -5px;
+	vertical-align: top;
+	font-family: Calibri;
+}
+
+.submit {
+	padding: 4px 33px 2px 33px;
+	background-color: rgb(155, 28, 31);
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.submit:hover{
+	background-color: rgb(127,0,1);
+}
+
+.submit-alone {
+	position: absolute;
+	margin-left: 7px;
+	padding: 4px 15px 2px 15px;
+	width: 180px;
 }
