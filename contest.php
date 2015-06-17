@@ -22,13 +22,16 @@
         <div id="ask-post" class="container">
         	<span class="span-ask-post">Je poste ma photo participante</span>
             <img id="arrow-participate" src="img/arrow.png" />
-            <div id="global-browse-zone">
-                <div id="hide-button"><input type="file" name="browse-image" id="browse-image"></input></div>
-                    <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br><span id="ou">OU</span><br>
-                    <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
-            </div>
         </div>
 
+        <div id="global-browse-zone">
+            <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
+            <div id="dynamic-upload-zone">
+                <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br><span id="ou">OU</span><br>
+                <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
+            </div>
+        </div>
+        
         <hr id="contest-separator">
         <div id="vote-zone">
              <div id="photos-candidats">
