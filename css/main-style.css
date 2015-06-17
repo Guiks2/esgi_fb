@@ -117,15 +117,6 @@ hr {
 }
 
 /***************************************************/
-#ask-post {
-	position: absolute;
-	top: 280px;
-	margin-left: 50px;
-	font-size: 24pt;
-	transform: rotate(-10deg);
-	cursor: pointer;
-}
-
 .container-parent {
 	width: 90%;
 	margin: 0 auto;
@@ -138,16 +129,8 @@ hr {
 	min-height: 400px;
 }
 
-#arrow-participate {
-	margin-left: 130px;
-	margin-top: -10px;
-	width: 100px;
-	height: auto;
-	transform: rotate(50deg);
-}
-
 hr#contest-separator {
-	margin-top: 190px;
+	margin-top: 40px;
 }
 
 #vote-zone {
@@ -168,30 +151,15 @@ hr#contest-separator {
 	overflow: hidden;
 }
 
-#global-browse-zone {
-	position: absolute;
-	left: 360px;
-	top: 280px;
-	font-size: 18px;
-	text-align: center;
-	width: 265px;
-}
-
-.button-upload {
-	float: left;
-	padding: 10px 20px;
-	cursor: pointer;
-	width: 230px;
-}
-
 #default-choice {
-	float: left;
+	display: block;
 	margin-left: 17px;
-	width: 200px;
-	padding: 5px 15px;
+	width: 330px;
+	padding: 5px 10px;
 	background-color: rgba(38,38,38,0.5);
 	color: white;
 	cursor: pointer;
+	text-align: center;
 }
 
 #default-choice:hover {
@@ -201,13 +169,14 @@ hr#contest-separator {
 #option-list {
 	position: absolute;
 	margin-left: 17px;
-	margin-top: 34px;
-	padding: 5px 15px;
-	width: 200px;
+	margin-top: 1px;
+	padding: 5px 10px;
+	width: 330px;
 	background-color: rgba(38,38,38,0.7);
 	list-style: none;
 	display: none;
 	z-index: 5;
+	text-align: center;
 }
 
 #option-list li:hover {
@@ -216,21 +185,23 @@ hr#contest-separator {
 }
 
 #add-new-album {
-	position: absolute;
-	top: 90px;
-	left: 20px;
+	margin-left: 14px;
 	z-index: 1;
 }
 #add-new-album input {
-	margin-right: 5px;
-	padding: 5px 5px;
-	margin-top: -5px;
+	display: inline-block;
+	margin-top: 10px;
+	width: 250px;
+	padding: 5px 10px;
 	vertical-align: top;
 	font-family: Calibri;
 }
 
 .submit {
-	padding: 4px 33px 2px 33px;
+	display: inline-block;
+	text-align: center;
+	margin-top: 10px;
+	width: 90px;
 	background-color: rgb(155, 28, 31);
 	vertical-align: top;
 	cursor: pointer;
@@ -241,8 +212,47 @@ hr#contest-separator {
 }
 
 .submit-alone {
-	position: absolute;
-	margin-left: 7px;
-	padding: 4px 15px 2px 15px;
-	width: 180px;
+	display: block;
+	margin-left: 3px;
+	margin-top: 5px;
+	padding: 5px 10px;
+	width: 330px;
+}
+
+#contest-container-child-2 {
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
+}
+
+#ask-post {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 32px;
+}
+
+.span-ask-post {
+	display: block;
+	transform: rotate(-10deg);
+}
+
+#ask-post img {
+	transform: rotate(50deg);
+	width: 100px;
+	height: auto;
+	margin-left: 130px;
+	margin-top: -50px;
+}
+
+#global-browse-zone {
+	display: inline-block;
+	margin-top: 30px;
+	font-size: 24px;
+}
+
+.button-upload {
+	display: block;
+	width: 330px;
+	padding: 10px 20px;
+	cursor: pointer;
 }
