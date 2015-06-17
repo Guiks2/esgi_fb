@@ -58,6 +58,7 @@ if($_SERVER['SERVER_NAME'] == 'esgi-fb.herokuapp.com'){
     $helper = new FacebookCanvasLoginHelper();
     $session = $helper->getSession();
 }
+print_r($_SERVER);
 
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
