@@ -61,7 +61,7 @@ if ($session) {
     $params = ['read_stream, publish_actions, user_photos, user_status'];
     
     $loginUrl = $helper->getLoginUrl($params);
-    echo "<script type='text/javascript'>window.location = '".$loginUrl."';</script>";
+    echo "<script type='text/javascript'>window.location.href = '".$loginUrl."';</script>";
     exit();
 }
 ?>
