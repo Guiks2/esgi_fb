@@ -64,9 +64,10 @@ if(!empty($_SERVER['HTTP_ORIGIN'])){
 
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
+    echo '<script type="text/javascript">alert("'.print_r($_SESSION).'");</script>';
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-    $params = array(    'scope' => 'read_stream,publish_actions,user_photos,user_status'  );
+    $params = array('scope' => 'read_stream,publish_actions,user_photos,user_status');
     if(!empty($_SERVER['HTTP_ORIGIN'])){
         $params['canvas'] = 1;
     }
