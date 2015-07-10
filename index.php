@@ -66,8 +66,7 @@ if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-    $params = array(    'scope' => 'read_stream,publish_actions,user_photos,user_status',
-                        'redirect_uri' => 'https://esgi-fb.herokuapp.com/contest.php'   );
+    $params = array(    'scope' => 'read_stream,publish_actions,user_photos,user_status'  );
     if(!empty($_SERVER['HTTP_ORIGIN'])){
         $params['canvas'] = 1;
     }
