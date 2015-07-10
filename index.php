@@ -67,7 +67,7 @@ if ($session) {
     echo '<script>window.location.href="https://esgi-fb.herokuapp.com/contest.php";</script>';
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-    $params = array('scope' => 'read_stream,publish_actions,user_photos,user_status');
+    $params = array('scope' => 'public_profile,read_stream,publish_actions,user_photos,user_status');
     if(!empty($_SERVER['HTTP_ORIGIN'])){
         $params['canvas'] = 1;
     }
