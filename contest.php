@@ -1,7 +1,7 @@
 <?php 
     session_start();
     $response = $fb->get('/me?fields=id,name', $_SESSION['fb_token']);
-    $user = $response->getGraphUser();
+    //$user = $response->getGraphUser();
 ?>
 
 <!doctype html>
@@ -26,7 +26,7 @@
         </div>
 
         <div id="inter-informations">
-            <?php echo 'Name: '.$user['name']; ?>
+          
 
         </div>
         <div id="contest-container-child-2">
