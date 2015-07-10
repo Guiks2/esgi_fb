@@ -69,7 +69,6 @@ if ($session) {
     if(!empty($_SERVER['HTTP_ORIGIN'])){
         $params['canvas'] = 1;
     }
-    print_r($params);
     $loginUrl = $helper->getLoginUrl($params);
     echo "<script type='text/javascript'>top.location.href = '".$loginUrl."';</script>";
 }
