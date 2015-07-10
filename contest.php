@@ -12,8 +12,6 @@
     const APPID = "764343183684137";
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
-    $response = $fb->get('/me?fields=id,name', $_SESSION['fb_token']);
-    $user = $response->getGraphUser();
 ?>
 
 <!doctype html>
@@ -38,7 +36,6 @@
         </div>
 
         <div id="inter-informations">
-            <?php echo 'Name: '.$user['name']; ?>
 
         </div>
         <div id="contest-container-child-2">
