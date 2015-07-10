@@ -64,7 +64,7 @@ if(!empty($_SERVER['HTTP_ORIGIN'])){
 
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
-    echo '<script>window.href="https://esgi-fb.herokuapp.com/contest.php";</script>';
+    echo '<script>window.location.href="https://esgi-fb.herokuapp.com/contest.php";</script>';
 } else {
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
     $params = array('scope' => 'read_stream,publish_actions,user_photos,user_status');
