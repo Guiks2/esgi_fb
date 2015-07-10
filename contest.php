@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $response = $fb->get('/me?fields=id,name,picture', $_SESSION['fb_token']);
+    $response = $fb->get('/me?fields=id,name', $_SESSION['fb_token']);
     $user = $response->getGraphUser();
 ?>
 
