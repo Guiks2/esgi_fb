@@ -47,8 +47,6 @@ FacebookSession::setDefaultApplication(APPID, APPSECRET);
 $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callback.php');
 $params = array('scope' => 'public_profile, read_stream, publish_actions, user_photos, user_status');
 $loginUrl = $helper->getLoginUrl($params);
-   
-}
 
 var_dump($session);
 
