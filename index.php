@@ -28,6 +28,7 @@
 
 <?php error_reporting(E_ALL);
 ini_set("display_errors", 1);
+session_destroy();
 session_start();
 
 require __DIR__ . "/facebook-php-sdk-v4-4.0-dev/autoload.php";
