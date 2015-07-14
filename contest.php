@@ -11,6 +11,8 @@
 
     const APPID = "764343183684137";
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
+
+    FacebookSession::setDefaultApplication(APPID, APPSECRET);
     
     error_reporting(E_ALL);
     ini_set("display_errors", 1); 
