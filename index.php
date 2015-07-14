@@ -48,6 +48,7 @@ FacebookSession::setDefaultApplication(APPID, APPSECRET);
 if(!empty($_SERVER['HTTP_ORIGIN'])){
     $helper = new FacebookCanvasLoginHelper();
     $session = $helper->getSession();
+    echo "A<br>";
 } else {
     $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callback.php');
     /*
@@ -55,8 +56,10 @@ if(!empty($_SERVER['HTTP_ORIGIN'])){
      */
     if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
         $session = new FacebookSession($_SESSION['fb_token']);
+        echo "B-1<br>";
     } else {
         $session = $helper->getSessionFromRedirect();
+        echo "B-2<br>";
     }
 }
 //print_r($_SERVER);
@@ -65,11 +68,14 @@ if(!empty($_SERVER['HTTP_ORIGIN'])){
 
 if ($session) {
     $_SESSION['fb_token'] = (string)$session->getAccessToken();
+    echo "C-1<br>";
 } else {
+    echo "C-2<br>";
     // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
     $params = array('scope' => 'public_profile,read_stream,publish_actions,user_photos,user_status');
     if(!empty($_SERVER['HTTP_ORIGIN'])){
         $params['canvas'] = 1;
+        echo "C-2.1<br>";
     }
     $loginUrl = $helper->getLoginUrl($params);
     //echo "<script type='text/javascript'>top.location.href = '".$loginUrl."';</script>";
