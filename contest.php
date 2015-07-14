@@ -11,7 +11,9 @@
 
     const APPID = "764343183684137";
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
-
+    
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1); 
     if(isset($_SESSION['fb_token'])) {
         $session = new FacebookSession($_SESSION['fb_token']);
         $request = new FacebookRequest($session, 'GET', '/me');
