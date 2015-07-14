@@ -30,7 +30,6 @@
 ini_set("display_errors", 1);
 
 session_start();
-var_dump($_SESSION);
 require __DIR__ . "/facebook-php-sdk-v4-4.0-dev/autoload.php";
 
 use Facebook\FacebookSession;
@@ -44,44 +43,10 @@ const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
-// Différenciation connexion site et canvas
-if(!empty($_SERVER['HTTP_ORIGIN'])){
-    $helper = new FacebookCanvasLoginHelper();
-    $session = $helper->getSession();
-    echo "A<br>";
-} else {
-    $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callback.php');
-    /*
-     * Création de l'utilisateur à partir de la session ou affichage du lien de connexion
-     */
-    if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
-        $session = new FacebookSession($_SESSION['fb_token']);
-        echo "B-1<br>";
-    } else {
-        $session = $helper->getSessionFromRedirect();
-        echo "B-2<br>";
-    }
-}
+$helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callback.php');
+$loginUrl = $helper->getLoginUrl($params); 
 
-var_dump($session);
-//print_r($_SERVER);
-//print_r('-------------------------------');
-//print_r($_SERVER['HTTP_ORIGIN']);
 
-if ($session) {
-    $_SESSION['fb_token'] = (string)$session->getAccessToken();
-    echo "C-1<br>";
-} else {
-    echo "C-2<br>";
-    // Possibilité d'ajouter des paramètres dans getLoginUrl pour avoir les permissions
-    $params = array('scope' => 'public_profile,read_stream,publish_actions,user_photos,user_status');
-    if(!empty($_SERVER['HTTP_ORIGIN'])){
-        $params['canvas'] = 1;
-        echo "C-2.1<br>";
-    }
-    $loginUrl = $helper->getLoginUrl($params);
-    //echo "<script type='text/javascript'>top.location.href = '".$loginUrl."';</script>";
-}
 ?>
 <body>
 	<div class="container-parent">
