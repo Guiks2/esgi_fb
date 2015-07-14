@@ -11,16 +11,6 @@
 
     const APPID = "764343183684137";
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
-
-    $fb = new Facebook\Facebook([
-      'app_id' => APPID,
-      'app_secret' => APPSECRET,
-      'default_graph_version' => 'v2.2',
-    ]);
-
-
-    $response = $fb->get('/me?fields=id,name', $_SESSION['fb_token']);
-    $user = $response->getGraphUser();
 ?>
 
 <!doctype html>
