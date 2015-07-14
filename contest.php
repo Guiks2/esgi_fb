@@ -13,8 +13,8 @@
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
     if(isset($_SESSION['fb_token'])) {
-        $session = new Facebook\FacebookSession($_SESSION['fb_token']);
-        $request = new Facebook\FacebookRequest($session, 'GET', '/me');
+        $session = new FacebookSession($_SESSION['fb_token']);
+        $request = new FacebookRequest($session, 'GET', '/me');
         $request = $request->execute();
         $user = $request->getGraphObject(Facebook\GraphUser::className());
         echo "Name: " . $user->getName();
