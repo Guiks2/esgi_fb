@@ -62,6 +62,8 @@ if(!empty($_SERVER['HTTP_ORIGIN'])){
         echo "B-2<br>";
     }
 }
+
+var_dump($session);
 //print_r($_SERVER);
 //print_r('-------------------------------');
 //print_r($_SERVER['HTTP_ORIGIN']);
