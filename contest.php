@@ -11,6 +11,18 @@
 
     const APPID = "764343183684137";
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
+
+    if(isset($_SESSION['fb_token'])) {
+        $session = new Facebook\FacebookSession($_SESSION['fb_token']);
+        $request = new Facebook\FacebookRequest($session, 'GET', '/me');
+        $request = $request->execute();
+        $user = $request->getGraphObject(Facebook\GraphUser::className());
+        echo "Name: " . $user->getName();
+        echo "<br/>";
+
+        echo '<img src=\"https://graph.facebook.com/"'. $user. '"/picture?type=large\">';
+
+    }
 ?>
 
 <!doctype html>
