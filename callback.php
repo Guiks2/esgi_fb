@@ -19,4 +19,10 @@ $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callbac
 
 // Now you have the session
 $session = $helper->getSessionFromRedirect();
-var_dump($session);
+$_SESSION['fb_token'] = $session;
+
+if($session) {
+	header("Location: https://esgi-fb.herokuapp.com/contest.php");
+} else {
+	header("Location: https://esgi-fb.herokuapp.com");
+}

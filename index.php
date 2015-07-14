@@ -48,9 +48,6 @@ $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callbac
 $params = array('scope' => 'public_profile, read_stream, publish_actions, user_photos, user_status');
 $loginUrl = $helper->getLoginUrl($params);
 
-var_dump($session);
-
-
 ?>
 <body>
 	<div class="container-parent">
