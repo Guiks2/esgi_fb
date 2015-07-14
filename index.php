@@ -30,6 +30,7 @@
 ini_set("display_errors", 1);
 
 session_start();
+var_dump($_SESSION);
 require __DIR__ . "/facebook-php-sdk-v4-4.0-dev/autoload.php";
 
 use Facebook\FacebookSession;
@@ -44,7 +45,12 @@ const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callback.php');
-$loginUrl = $helper->getLoginUrl($params); 
+$params = array('scope' => 'public_profile,read_stream,publish_actions,user_photos,user_status');
+$loginUrl = $helper->getLoginUrl($params);
+   
+}
+
+var_dump($session);
 
 
 ?>
