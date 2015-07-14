@@ -14,14 +14,12 @@
 
     if(isset($_SESSION['fb_token'])) {
         $session = new FacebookSession($_SESSION['fb_token']);
-        /*$request = new FacebookRequest($session, 'GET', '/me');
-        $request = $request->execute();
-        $user = $request->getGraphObject(GraphUser::className());
-        echo "Name: " . $user->getName();
-        echo "<br/>";
+        $request = new FacebookRequest($session, 'GET', '/me');
+        $response = $request->execute();
+        $user = $request->getGraphObject();
+        var_dump($user);
 
-        echo '<img src=\"https://graph.facebook.com/"'. $user. '"/picture?type=large\">';*/
-
+        //echo '<img src=\"https://graph.facebook.com/"'. $user. '"/picture?type=large\">';
     }
 ?>
 
