@@ -16,7 +16,7 @@
         $session = new FacebookSession($_SESSION['fb_token']);
         $request = new FacebookRequest($session, 'GET', '/me');
         $request = $request->execute();
-        $user = $request->getGraphObject(Facebook\GraphUser::className());
+        $user = $request->getGraphObject(GraphUser::className());
         echo "Name: " . $user->getName();
         echo "<br/>";
 
