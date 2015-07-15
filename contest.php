@@ -18,7 +18,7 @@
     ini_set("display_errors", 1); 
     if(isset($_SESSION['fb_token'])) {
         $session = new FacebookSession($_SESSION['fb_token']);
-        $request = new FacebookRequest($session, 'GET', '/me/photos');
+        $request = new FacebookRequest($session, 'GET', '/me/albums');
         $response = $request->execute();
         $photos = $response->getGraphObject();
         print_r($photos);
