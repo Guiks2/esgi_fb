@@ -18,10 +18,10 @@
     ini_set("display_errors", 1); 
     if(isset($_SESSION['fb_token'])) {
         $session = new FacebookSession($_SESSION['fb_token']);
-        $request = new FacebookRequest($session, 'GET', '/me');
+        $request = new FacebookRequest($session, 'GET', '/me/photos');
         $response = $request->execute();
-        $user = $response->getGraphObject();
-        var_dump($user);
+        $photos = $response->getGraphObject();
+        var_dump($photos);
 
         //echo '<img src=\"https://graph.facebook.com/"'. $user. '"/picture?type=large\">';
     }
