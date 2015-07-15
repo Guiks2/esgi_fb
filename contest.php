@@ -21,7 +21,7 @@
         $request = new FacebookRequest($session, 'GET', '/me/albums');
         $response = $request->execute();
         $photos = json_decode($response->getRawResponse(), true);
-        print_r($arr);
+        print_r($photos);
 
         //echo '<img src=\"https://graph.facebook.com/"'. $user. '"/picture?type=large\">';
     }
