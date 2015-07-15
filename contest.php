@@ -21,7 +21,7 @@
         $request = new FacebookRequest($session, 'GET', '/me/photos');
         $response = $request->execute();
         $photos = $response->getGraphObject();
-        var_dump($photos);
+        print_r($photos);
 
         //echo '<img src=\"https://graph.facebook.com/"'. $user. '"/picture?type=large\">';
     }
