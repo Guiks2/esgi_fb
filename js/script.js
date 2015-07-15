@@ -20,15 +20,23 @@ $("body").on("click", "#button-browse-image", function() {
 
 $("body").on("change", "#browse-image", function() {
   var filename = $("#browse-image").val();
+  var albums_buffer = "";
+
   if(filename !== 'undefined' && filename.length > 0) {
     var antislash_index = filename.lastIndexOf('\\');
     filename = filename.substring(antislash_index + 1 , filename.length);
+
+    $.getJSON("../php/getAlbums.php", function(data) {
+      $.each(json, function(index, value) {
+        albums_buffer += "<li data-id='"+value.id+"'>"+value.name+"</li>";
+      });
+    });
 
     $("#dynamic-upload-zone").html("");
     $("#dynamic-upload-zone").append("<span>Choisissez l'album dans lequel ranger votre photo</span>");
     $("#dynamic-upload-zone").append("<br><span style='font-family: \"Trebuchet MS\"; font-size: 12px;'>["+ filename + "] </span><span style='position: absolute; right: -19px; top: 24pxpx;font-family: \"Trebuchet MS\"; font-size: 10px; cursor: pointer;' onclick='cancelUpload()'>(Annuler)</span><br>");
     $("#dynamic-upload-zone").append("<br><span id='default-choice'>-- Sélectionner l'album --</span>");
-    $("#dynamic-upload-zone").append("<ul id='option-list'><li>Option 1</li><li>Option 2</li><li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>");
+    $("#dynamic-upload-zone").append("<ul id='option-list'>"+albums_buffer+"<li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>");
   }
 });
 
