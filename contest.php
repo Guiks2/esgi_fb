@@ -21,7 +21,8 @@
         $request = new FacebookRequest($session, 'GET', '/me/albums');
         $response = $request->execute();
         $photos = $response->getGraphObject();
-        print_r($photos);
+        $arr = self::convertToAssoc($object);
+        print_r($arr);
 
         //echo '<img src=\"https://graph.facebook.com/"'. $user. '"/picture?type=large\">';
     }
