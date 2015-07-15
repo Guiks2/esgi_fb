@@ -48,10 +48,6 @@
             </div>
         </div>
 
-        <div id="inter-informations">
-            <?php echo 'Name: '.$user['name']; ?>
-
-        </div>
         <div id="contest-container-child-2">
             <div id="ask-post" class="container">
             	<span class="span-ask-post">Je poste ma photo participante</span><br>

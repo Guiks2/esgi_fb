@@ -23,5 +23,5 @@ if(isset($_SESSION['fb_token'])) {
     $response = $request->execute();
     $photos = json_decode($response->getRawResponse(), true);
 
-    return json_encode($photos["data"]);
+    echo json_encode($photos["data"]);
 }
