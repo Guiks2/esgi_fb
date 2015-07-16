@@ -26,7 +26,7 @@ $("body").on("change", "#browse-image", function() {
     var antislash_index = filename.lastIndexOf('\\');
     filename = filename.substring(antislash_index + 1 , filename.length);
 
-    $.getJSON("../php/getAlbums.php", function(data) {
+    $.getJSON("../getAlbums.php", function(data) {
       $.each(json, function(index, value) {
         albums_buffer += "<li data-id='"+value.id+"'>"+value.name+"</li>";
       });
