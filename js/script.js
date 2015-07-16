@@ -31,13 +31,13 @@ $("body").on("change", "#browse-image", function() {
       $.each(data, function(index, value) {
         albums_buffer += "<li data-id='"+value.id+"'>"+value.name+"</li>";
       });
+    }).success(function() {
+        $("#dynamic-upload-zone").html("");
+        $("#dynamic-upload-zone").append("<span>Choisissez l'album dans lequel ranger votre photo</span>");
+        $("#dynamic-upload-zone").append("<br><span style='font-family: \"Trebuchet MS\"; font-size: 12px;'>["+ filename + "] </span><span style='position: absolute; right: -19px; top: 24pxpx;font-family: \"Trebuchet MS\"; font-size: 10px; cursor: pointer;' onclick='cancelUpload()'>(Annuler)</span><br>");
+        $("#dynamic-upload-zone").append("<br><span id='default-choice'>-- Sélectionner l'album --</span>");
+        $("#dynamic-upload-zone").append("<ul id='option-list'>"+albums_buffer+"<li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>");
     });
-
-    $("#dynamic-upload-zone").html("");
-    $("#dynamic-upload-zone").append("<span>Choisissez l'album dans lequel ranger votre photo</span>");
-    $("#dynamic-upload-zone").append("<br><span style='font-family: \"Trebuchet MS\"; font-size: 12px;'>["+ filename + "] </span><span style='position: absolute; right: -19px; top: 24pxpx;font-family: \"Trebuchet MS\"; font-size: 10px; cursor: pointer;' onclick='cancelUpload()'>(Annuler)</span><br>");
-    $("#dynamic-upload-zone").append("<br><span id='default-choice'>-- Sélectionner l'album --</span>");
-    $("#dynamic-upload-zone").append("<ul id='option-list'>"+albums_buffer+"<li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>");
   }
 });
 
