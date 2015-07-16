@@ -45,7 +45,7 @@ $("body").on("click", "#default-choice", function() {
 });
 
 $("body").on("click", "#option-list li", function() {
-  $("#default-choice").text($(this).text());
+  $("#default-choice").text($(this).text()).attr("data-id", $(this).attr("data-id"));
   $("#option-list").fadeOut(150);
   if($(this).attr("data-node") == "crealbum") {
     $("#add-new-album").html("<input type='text' id='new-album-name'></input><span class='submit'>Ok</span>");
