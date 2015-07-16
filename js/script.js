@@ -27,7 +27,6 @@ $("body").on("change", "#browse-image", function() {
     filename = filename.substring(antislash_index + 1 , filename.length);
 
     $.getJSON("../getAlbums.php", function(data) {
-      console.log(data);
       $.each(data, function(index, value) {
         albums_buffer += "<li data-id='"+value.id+"'>"+value.name+"</li>";
       });
