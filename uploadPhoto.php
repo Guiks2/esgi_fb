@@ -36,7 +36,7 @@ if(isset($_SESSION['fb_token'])) {
 
         $request_get = new FacebookRequest ($session, 'GET', '/'.$done[0]);
         $response_get = $request_get->execute();
-        $photo = $response->getGraphObject();
+        $photo = $response_get->getGraphObject();
 
         var_dump($photo);
 
