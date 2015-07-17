@@ -55,18 +55,8 @@
         
         <hr id="contest-separator">
         <div id="vote-zone">
-             <div id="photos-candidats">
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <br/>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <br/>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <div class="photo"></div>
+            <div id="photos-candidats">
+                
             </div>
             <div id="load-more">Charger plus</div>
         </div>
@@ -78,10 +68,8 @@
 
     $.getJSON("../getContestPictures.php", function(data) {
       $.each(data, function(index, value) {
-        console.log(value);
+        $("#photos-candidats").append("<div class='photo'><img src='"+value[3]+"' style='width: 100%; height: auto;'></div>");
       });
-    }).success(function() {
-        console.log(data);
     });
     </script>
     <script src="js/script.js"></script>
