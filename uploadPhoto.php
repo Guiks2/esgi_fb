@@ -33,12 +33,12 @@ if(isset($_SESSION['fb_token'])) {
         $done = json_decode($response_add->getRawResponse(), true);
 
         print_r($done);
-        
+
         $request_get = new FacebookRequest ($session, 'GET', '/'.$done[0]);
         $response_get = $request_get->execute();
-        $photo = json_decode($response_get->getRawResponse(), true);
+        $photo = $response->getGraphObject();
 
-        print_r($photo);
+        var_dump($photo);
 
         //echo "<script>top.location.href='contest.php;</script>";
     } catch (FacebookApiException $e) {
