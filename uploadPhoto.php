@@ -16,10 +16,13 @@ const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 if(isset($_SESSION['fb_token'])) {
+    $session = new FacebookSession($_SESSION['fb_token']);
 	if($_POST['album-id'] == -1){
         //$album_id = createAlbum($_POST['new_album_name'], $session, $id_user);
+        echo "Cas 1";
     } else{
         $album_id = $_POST['album-id'];
+        echo "Cas 2";
     }
     
     $curlFile = array('source' => new CURLFile($_FILES['browse-image']['tmp_name'], $_FILES['browse-image']['type']));
