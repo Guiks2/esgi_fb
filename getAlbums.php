@@ -21,7 +21,7 @@ if(isset($_SESSION['fb_token'])) {
     $session = new FacebookSession($_SESSION['fb_token']);
     $request = new FacebookRequest($session, 'GET', '/me/albums');
     $response = $request->execute();
-    $photos = json_decode($response->getRawResponse(), true);
+    $albums = json_decode($response->getRawResponse(), true);
 
-    echo json_encode($photos["data"]);
+    echo json_encode($albums["data"]);
 }
