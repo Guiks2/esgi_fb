@@ -32,9 +32,11 @@ if(isset($_SESSION['fb_token'])) {
         $response_add = $request_add->execute();
         $done = json_decode($response_add->getRawResponse(), true);
 
+        print_r($done);
+        
         $request_get = new FacebookRequest ($session, 'GET', '/'.$done[0]);
         $response_get = $request_get->execute();
-        $photo = json_decode($response_add->getRawResponse(), true);
+        $photo = json_decode($response_get->getRawResponse(), true);
 
         print_r($photo);
 
