@@ -28,11 +28,16 @@ if(isset($_SESSION['fb_token'])) {
     $curlFile = array('source' => new CURLFile($_FILES['browse-image']['tmp_name'], $_FILES['browse-image']['type']));
 
     try {
-        $request = new FacebookRequest ($session, 'POST', '/'.$album_id.'/photos', $curlFile);
-        $response = $request->execute();
-        $done = json_decode($response->getRawResponse(), true);
+        $request_add = new FacebookRequest ($session, 'POST', '/'.$album_id.'/photos', $curlFile);
+        $response_add = $request_add->execute();
+        $done = json_decode($response_add->getRawResponse(), true);
 
-        print_r($done);
+        $request_get = new FacebookRequest ($session, 'GET', '/'.$done[0]);
+        $response_get = $request_get->execute();
+        $photo = json_decode($response_add->getRawResponse(), true);
+
+        print_r($photo);
+
         //echo "<script>top.location.href='contest.php;</script>";
     } catch (FacebookApiException $e) {
         error_log($e);
