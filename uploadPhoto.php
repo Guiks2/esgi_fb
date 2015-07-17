@@ -32,13 +32,20 @@ if(isset($_SESSION['fb_token'])) {
         $response_add = $request_add->execute();
         $done = json_decode($response_add->getRawResponse(), true);
 
-        print_r($done);
 
         $request_get = new FacebookRequest ($session, 'GET', '/'.$done["id"]);
         $response_get = $request_get->execute();
-        $photo = $response_get->getGraphObject();
+        $photo = json_decode($response_get->getRawResponse(), true);
 
-        var_dump($photo);
+        include("connectDB.php");
+        $photo_id = $photo['id'];
+        $photo_from_id = $photo['from']->id;
+        $photo_url = $photo['source'];
+
+        $sql = "INSERT INTO pictures VALUES('".$photo_id."', '".$photo_from_id."', '".$photo_url."', 0)";
+        if (!($result = $mysqli->query($sql))) {
+             echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+        }
 
         //echo "<script>top.location.href='contest.php;</script>";
     } catch (FacebookApiException $e) {
