@@ -55,7 +55,7 @@
             </div>
 
             <div id="global-browse-zone">
-                <form id="form-upload" action="uploadFile.php" enctype="multipart/form-data" method="post">
+                <form id="form-upload" action="uploadPhoto.php" enctype="multipart/form-data" method="post">
                     <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
                 </form>
                 <div id="dynamic-upload-zone">
