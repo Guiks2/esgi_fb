@@ -39,13 +39,16 @@ if(isset($_SESSION['fb_token'])) {
 
         include("connectDB.php");
         $photo_id = $photo['id'];
-        $photo_from_id = $photo['from']->id;
+        $photo_from_id = $photo['from']['id'];
+        $photo_from_name = $photo['from']['name'];
         $photo_url = $photo['source'];
 
-        $sql = "INSERT INTO pictures VALUES('".$photo_id."', '".$photo_from_id."', '".$photo_url."', 0)";
+        $sql = "INSERT INTO pictures VALUES('".$photo_id."', '".$photo_from_id."', '".$photo_from_name."', '".$photo_url."', 0)";
         if (!($result = $mysqli->query($sql))) {
              echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
         }
+
+        print_r($photo);
 
         //echo "<script>top.location.href='contest.php;</script>";
     } catch (FacebookApiException $e) {
