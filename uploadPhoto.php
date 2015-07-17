@@ -32,6 +32,7 @@ if(isset($_SESSION['fb_token'])) {
         $response = $request->execute();
         $done = json_decode($response->getRawResponse(), true);
 
+        print_r($done);
         //echo "<script>top.location.href='contest.php;</script>";
     } catch (FacebookApiException $e) {
         error_log($e);
