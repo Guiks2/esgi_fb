@@ -32,10 +32,12 @@ $("body").on("change", "#browse-image", function() {
       });
     }).success(function() {
         $("#dynamic-upload-zone").html("");
-        $("#dynamic-upload-zone").append("<span>Choisissez l'album dans lequel ranger votre photo</span>");
-        $("#dynamic-upload-zone").append("<br><span style='font-family: \"Trebuchet MS\"; font-size: 12px;'>["+ filename + "] </span><span style='position: absolute; right: -19px; top: 24pxpx;font-family: \"Trebuchet MS\"; font-size: 10px; cursor: pointer;' onclick='cancelUpload()'>(Annuler)</span><br>");
-        $("#dynamic-upload-zone").append("<br><span id='default-choice'>-- Sélectionner l'album --</span>");
-        $("#dynamic-upload-zone").append("<ul id='option-list'>"+albums_buffer+"<li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>");
+        $("#form-upload").append("<div id='upload-infos'>");
+        $("#form-upload").append("<span>Choisissez l'album dans lequel ranger votre photo</span>");
+        $("#form-upload").append("<br><span style='font-family: \"Trebuchet MS\"; font-size: 12px;'>["+ filename + "] </span><span style='position: absolute; right: -19px; top: 24pxpx;font-family: \"Trebuchet MS\"; font-size: 10px; cursor: pointer;' onclick='cancelUpload()'>(Annuler)</span><br>");
+        $("#form-upload").append("<br><span id='default-choice'>-- Sélectionner l'album --</span>");
+        $("#form-upload").append("<ul id='option-list'>"+albums_buffer+"<li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>");
+        $("#form-upload").append("</div>");
     });
   }
 });
@@ -48,11 +50,11 @@ $("body").on("click", "#option-list li", function() {
   $("#default-choice").text($(this).text()).attr("data-id", $(this).attr("data-id"));
   $("#option-list").fadeOut(150);
   if($(this).attr("data-node") == "crealbum") {
-    $("#add-new-album").html("<input type='text' id='new-album-name'></input><span class='submit'>Ok</span>");
+    $("#add-new-album").html("<input type='text' id='new-album-name'></input><input type='submit' class='submit'>Ok</input>");
   }
   else {
     $("#add-new-album").html("");
-     $("#add-new-album").html("<span class='submit submit-alone'>Ok</span>");
+     $("#add-new-album").html("<input type='submit' class='submit submit-alone'>Ok</input>");
   }
 });
 
@@ -61,5 +63,6 @@ $(".container-parent").on("click", function() {
 });
 
 function cancelUpload() {
+  $("#upload-infos").remove();
   $("#dynamic-upload-zone").html('<div id="hide-button"><input type="file" name="browse-image" id="browse-image"></input></div><span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br><span id="ou">OU</span><br><span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>');
 }

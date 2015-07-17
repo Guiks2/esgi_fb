@@ -55,7 +55,9 @@
             </div>
 
             <div id="global-browse-zone">
-                <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
+                <form id="form-upload" action="uploadFile.php" enctype="multipart/form-data" method="post">
+                    <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
+                </form>
                 <div id="dynamic-upload-zone">
                     <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br>
                     <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
