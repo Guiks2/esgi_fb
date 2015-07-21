@@ -93,7 +93,7 @@
 
     $.getJSON("../getContestPictures.php", function(data) {
       $.each(data, function(index, value) {
-        $("#photos-candidats").append("<div class='photo' style='background: url(\'"+value[3]+"\'); background-size: cover; background-position: center center;''></div>");
+        $("#photos-candidats").append("<div class='photo' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div>");
       });
     });
     </script>
