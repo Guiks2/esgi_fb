@@ -16,12 +16,6 @@
     $user_id_rq = new FacebookRequest($session, 'GET', '/me?fields=id');
     $user_id_rp = $user_id_rq->execute();
     $user_id = json_decode($user_id_rp->getRawResponse(), true);
-
-    include("connectDB.php");
-
-    if (!($result = $mysqli->query("SELECT * FROM pictures WHERE "))) {
-        echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
-    }
 }
 ?>
 
