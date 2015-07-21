@@ -14,10 +14,23 @@
 
     FacebookSession::setDefaultApplication(APPID, APPSECRET);
     $session = new FacebookSession($_SESSION['fb_token']);
-    
+
     $user_id_rq = new FacebookRequest($session, 'GET', '/me?fields=id');
     $user_id_rp = $user_id_rq->execute();
     $user_id = json_decode($user_id_rp->getRawResponse(), true);
+
+    include("connectDB.php");
+    $id_query = "SELECT * FROM pictures WHERE id_owner =".$user_id["id_owner"];
+
+    if (!($result = $mysqli->query($id_query))) {
+        echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+    $num_rows = $result->num_rows;
+
+    if($num_rows)
+        $existing_photo = true;
+    else
+        $existing_photo = false;
 ?>
 
 <!doctype html>
@@ -30,9 +43,6 @@
 </head>
 
 <body>
-    <?php
-        print_r($user_id);
-    ?>
 	<div class="contest-container container-parent">
     	<div id="container-child-1" class="container">
        		<div id="header">
@@ -44,6 +54,30 @@
             </div>
         </div>
 
+        <?php
+        if(empty($existing_photo)) {
+            echo    '<div id="contest-container-child-2">
+                         <div id="ask-post" class="container">
+                             <span class="span-ask-post">Je poste ma photo participante</span><br>
+                             <img id="arrow-participate" src="img/arrow.png"/>
+                        </div>
+
+                         <div id="global-browse-zone">
+                            <form id="form-upload" action="uploadPhoto.php" enctype="multipart/form-data" method="post">
+                                <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
+                            </form>
+                            <div id="dynamic-upload-zone">
+                                <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br>
+                                <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
+                            </div>
+                        </div>
+                    </div>';
+        }
+               
+            else {
+                echo 'Déjà fait';
+            }
+        ?>
         <div id="contest-container-child-2">
             <div id="ask-post" class="container">
             	<span class="span-ask-post">Je poste ma photo participante</span><br>
