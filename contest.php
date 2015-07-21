@@ -53,31 +53,30 @@
             	</p>
             </div>
         </div>
+        <div id="contest-container-child-2">
 
         <?php
         if(!$existing_photo) {
-            echo    '<div id="contest-container-child-2">
-                         <div id="ask-post" class="container">
-                             <span class="span-ask-post">Je poste ma photo participante</span><br>
-                             <img id="arrow-participate" src="img/arrow.png"/>
-                        </div>
+            echo    '<div id="ask-post" class="container">
+                        <span class="span-ask-post">Je poste ma photo participante</span><br>
+                        <img id="arrow-participate" src="img/arrow.png"/>
+                    </div>
 
-                         <div id="global-browse-zone">
-                            <form id="form-upload" action="uploadPhoto.php" enctype="multipart/form-data" method="post">
-                                <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
-                            </form>
-                            <div id="dynamic-upload-zone">
-                                <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br>
-                                <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
-                            </div>
+                    <div id="global-browse-zone">
+                        <form id="form-upload" action="uploadPhoto.php" enctype="multipart/form-data" method="post">
+                            <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
+                        </form>
+                        <div id="dynamic-upload-zone">
+                            <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br>
+                            <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
                         </div>
                     </div>';
+        }   
+        else {
+            echo    'Déjà fait';
         }
-               
-            else {
-                echo 'Déjà fait';
-            }
         ?>
+        </div>
         
         <hr id="contest-separator">
         <div id="vote-zone">
@@ -94,7 +93,7 @@
 
     $.getJSON("../getContestPictures.php", function(data) {
       $.each(data, function(index, value) {
-        $("#photos-candidats").append("<div class='photo'><img src='"+value[3]+"' style='width: 100%; height: auto;'></div>");
+        $("#photos-candidats").append('<div class="photo" style="background: url(\"'+value[3]+'\"); background-size: cover; background-position: center center;"></div>");
       });
     });
     </script>
