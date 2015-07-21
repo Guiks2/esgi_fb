@@ -22,12 +22,12 @@
     var_dump($user_id);
     echo "<br>";
     include("connectDB.php");
-    $id_query = "SELECT * FROM pictures WHERE id_owner = ".$user_id["id_owner"];
-
+    $id_query = "SELECT * FROM pictures WHERE id_owner = '".$user_id["id"]."'";
 
     if (!($result = $mysqli->query($id_query))) {
         echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
     }
+    
     $num_rows = $result->num_rows;
     print_r($num_rows);
     echo "<br>";
