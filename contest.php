@@ -13,6 +13,16 @@
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
     FacebookSession::setDefaultApplication(APPID, APPSECRET);
+    $user_id_rq = new FacebookRequest($session, 'GET', '/me?fields=id');
+    $user_id_rp = $user_id_rq->execute();
+    $user_id = json_decode($user_id_rp->getRawResponse(), true);
+
+    include("connectDB.php");
+
+    if (!($result = $mysqli->query("SELECT * FROM pictures WHERE "))) {
+        echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+}
 ?>
 
 <!doctype html>
@@ -25,6 +35,9 @@
 </head>
 
 <body>
+    <?php
+        print_r($user_id);
+    ?>
 	<div class="contest-container container-parent">
     	<div id="container-child-1" class="container">
        		<div id="header">
