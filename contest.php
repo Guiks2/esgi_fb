@@ -19,14 +19,19 @@
     $user_id_rp = $user_id_rq->execute();
     $user_id = json_decode($user_id_rp->getRawResponse(), true);
 
+    var_dump($user_id);
+    echo "<br>";
     include("connectDB.php");
-    $id_query = "SELECT * FROM pictures WHERE id_owner =".$user_id["id_owner"];
+    $id_query = "SELECT * FROM pictures WHERE id_owner = ".$user_id["id_owner"];
+
 
     if (!($result = $mysqli->query($id_query))) {
         echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
     }
     $num_rows = $result->num_rows;
-
+    print_r($num_rows);
+    echo "<br>";
+    var_dump($num_rows);
     if($num_rows)
         $existing_photo = true;
     else
