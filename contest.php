@@ -55,7 +55,7 @@
         </div>
 
         <?php
-        if(empty($existing_photo)) {
+        if($existing_photo) {
             echo    '<div id="contest-container-child-2">
                          <div id="ask-post" class="container">
                              <span class="span-ask-post">Je poste ma photo participante</span><br>
@@ -78,22 +78,6 @@
                 echo 'Déjà fait';
             }
         ?>
-        <div id="contest-container-child-2">
-            <div id="ask-post" class="container">
-            	<span class="span-ask-post">Je poste ma photo participante</span><br>
-                <img id="arrow-participate" src="img/arrow.png"/>
-            </div>
-
-            <div id="global-browse-zone">
-                <form id="form-upload" action="uploadPhoto.php" enctype="multipart/form-data" method="post">
-                    <div id="hide-button"><input type="file" name="browse-image" id="browse-image" accept="image/*"></input></div>
-                </form>
-                <div id="dynamic-upload-zone">
-                    <span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br>
-                    <span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>
-                </div>
-            </div>
-        </div>
         
         <hr id="contest-separator">
         <div id="vote-zone">
