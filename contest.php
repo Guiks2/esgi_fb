@@ -13,7 +13,7 @@
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
     FacebookSession::setDefaultApplication(APPID, APPSECRET);
-    $user_id_rq = new FacebookRequest($session, 'GET', '/me?fields=id');
+    $user_id_rq = new FacebookRequest($session, 'GET', '/me');
     $user_id_rp = $user_id_rq->execute();
     $user_id = json_decode($user_id_rp->getRawResponse(), true);
 }
