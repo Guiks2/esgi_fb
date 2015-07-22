@@ -77,7 +77,7 @@
         }   
         else {
             echo    '<div id="already-uploaded" class="container">
-                        <img src="'.$res[3].'"/>
+                        <div class="uploaded-photo" style="background: url('.$value[3].'); background-size: cover; background-position: center center;></div>"
                         <div id="upload-infos">
                             <span>Votre photo participante</span>
                         </div>

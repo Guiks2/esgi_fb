@@ -257,15 +257,15 @@ hr#contest-separator {
 	cursor: pointer;
 }
 
-.already-uploaded {
+#already-uploaded {
 	width: 60%;
 	margin: 0 auto;
 }
 
-.already-uploaded img {
+#already-uploaded .uploaded-photo {
 	display: inline-block; 
-	max-width: 250px; 
-	height: auto;
+	width: 250px; 
+	height: 250px;
 	border: dashed;
 	border-radius: 50%;
 }
