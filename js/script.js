@@ -120,5 +120,8 @@ function deletePicture(id) {
       type: "POST",
       url: "../deletePicture.php",
       data: {"id_pic": id} 
+      success: function() {
+        console.log("Hey");
+      }
   }); 
 }

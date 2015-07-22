@@ -12,8 +12,4 @@ if(isset($_SESSION['fb_token'])) {
     }
 
     echo "<script>top.location.href='contest.php;</script>";
-
-    } catch (FacebookApiException $e) {
-        error_log($e);
-    }
 }
