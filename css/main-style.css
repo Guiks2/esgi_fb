@@ -262,6 +262,19 @@ hr#contest-separator {
 	margin: 0 auto;
 }
 
+#already-uploaded .your-pic {
+	display: block;
+	margin-top: 260px;
+	font-size: 30px;
+}
+
+#already-uploaded .delete-pic{
+	display: block;
+	margin-top: 260px;
+	font-size: 22px;
+	color: rgb(155,28,31);
+}
+
 #already-uploaded .uploaded-photo {
 	display: inline-block; 
 	width: 250px; 
