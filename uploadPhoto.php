@@ -48,9 +48,7 @@ if(isset($_SESSION['fb_token'])) {
              echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
         }
 
-        print_r($photo);
-
-        //echo "<script>top.location.href='contest.php;</script>";
+        echo "<script>top.location.href='contest.php;</script>";
     } catch (FacebookApiException $e) {
         error_log($e);
     }
