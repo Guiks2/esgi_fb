@@ -11,5 +11,5 @@ if(isset($_SESSION['fb_token'])) {
        echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
     }
 
-    echo "<script>top.location.href='contest.php;</script>";
+    echo "<script>top.location.href='contest.php';</script>";
 }
