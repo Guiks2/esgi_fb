@@ -31,7 +31,9 @@
         $existing_photo = true;
     else
         $existing_photo = false;
-    print_r($result);
+
+    $res = $result->fetch_all();
+    print_r($res);
 ?>
 
 <!doctype html>
