@@ -37,12 +37,12 @@ $("body").on("change", "#browse-image", function() {
     }).success(function() {
         /* Mise à jour de la zone lorsque de la zone d'upload */
         $("#dynamic-upload-zone").html("");
-        $("#form-upload").append("<div id='upload-infos'>");
-        $("#form-upload").append("<span>Choisissez l'album dans lequel ranger votre photo</span>");
-        $("#form-upload").append("<br><span style='font-family: \"Trebuchet MS\"; font-size: 12px;'>["+ filename + "] </span><span style='position: absolute; right: -19px; top: 24pxpx;font-family: \"Trebuchet MS\"; font-size: 10px; cursor: pointer;' onclick='cancelUpload()'>(Annuler)</span><br>");
-        $("#form-upload").append("<br><input id='album-name-hidden' name='album-id' type='hidden'/> <span id='default-choice'>-- Sélectionner l'album --</span>");
-        $("#form-upload").append("<ul id='option-list'>"+albums_buffer+"<li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>");
-        $("#form-upload").append("</div>");
+        $("#form-upload").append("<div id='upload-infos'>"+
+                                  "<span>Choisissez l'album dans lequel ranger votre photo</span>"+
+                                  "<br><span style='font-family: \"Trebuchet MS\"; font-size: 12px;'>["+ filename + "] </span><span style='position: absolute; right: -19px; top: 24pxpx;font-family: \"Trebuchet MS\"; font-size: 10px; cursor: pointer;' onclick='cancelUpload()'>(Annuler)</span><br>"+
+                                  "<br><input id='album-name-hidden' name='album-id' type='hidden'/> <span id='default-choice'>-- Sélectionner l'album --</span>"+
+                                  "<ul id='option-list'>"+albums_buffer+"<li data-node='crealbum'>Créer un nouvel album...</li></ul><div id='add-new-album'></div>"+
+                                  "</div>");
     });
   }
 });
@@ -68,6 +68,7 @@ $("body").on("click", "#option-list li", function() {
 
   /* Si "Créer un album" est choisi */
   if($(this).attr("data-node") == "crealbum") {
+    $("#default-choice").text($(this).text());
     $("#add-new-album").html("<input type='text' id='new-album-name'></input><input type='submit' class='submit' value='Ok'></input>");
   }
   else {
