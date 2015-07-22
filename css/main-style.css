@@ -53,7 +53,7 @@ body {
 }
 
 #container-child-2 a {
-	font-size: 28px;
+	font-size: 16px;
 }
 
 #header {
@@ -99,8 +99,7 @@ hr {
 
 #photos-candidats {
 	position: relative;
-	width: 50%;
-	min-width: 500px;
+	width: 616px;
 	margin: 0 auto;
 	overflow: auto;
 }
@@ -108,9 +107,8 @@ hr {
 .photo {
 	display: inline-block;
 	margin: 5px;
-	height: 100px;
-	width: 170px;
-	border: dashed 1px white;
+	height: 140px;
+	width: 270px;
 	cursor: pointer;
 	transition: background-color 0.3s linear;
 	background-color: transparent;
