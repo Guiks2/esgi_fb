@@ -31,6 +31,7 @@
         $existing_photo = true;
     else
         $existing_photo = false;
+    print_r($result);
 ?>
 
 <!doctype html>

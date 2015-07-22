@@ -84,6 +84,9 @@ function isUrlExists(url, cb){
           complete:  function(xhr){
               if(typeof cb === 'function')
                  cb.apply(this, [xhr.status]);
+          },
+          error: function(){
+            console.log(".");
           }
       });
     } catch(e) {
