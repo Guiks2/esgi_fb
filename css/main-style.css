@@ -26,7 +26,7 @@ a {
 body {
 	background: url('../img/bg.jpg') center no-repeat fixed;
 	background-size: cover;
-	font-family: "Montserrat";
+	font-family: "Montserrat", sans-serif;
 	color: white;
 }
 
@@ -82,6 +82,7 @@ hr {
 #description-concours,
 #description-vote {
 	font-size: 25px;
+	font-family: "AmaticBold";
 }
 
 .red-button {
@@ -89,6 +90,7 @@ hr {
 	color: white;
 	padding: 15px 80px;
 	background-color: rgb(155, 28, 31);
+	font-size: 15px;
 }
 
 .red-button:hover {
@@ -98,6 +100,7 @@ hr {
 #photos-candidats {
 	position: relative;
 	width: 50%;
+	min-width: 500px;
 	margin: 0 auto;
 	overflow: auto;
 }
