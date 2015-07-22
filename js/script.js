@@ -11,9 +11,7 @@ $.fn.inView = function(){
 
 /* Au scroll, vérifier si la zone est en vue */
 $(document).scroll(function(){
-	if ($('#load-more').inView()) {
-	    $('#photos-candidats').append("<div class='photo'></div><div class='photo'></div><div class='photo'></div><br/><div class='photo'></div><div class='photo'></div><div class='photo'></div><br/><div class='photo'></div><div class='photo'></div><div class='photo'></div>");
-	}
+	
 });
 
 /* Clic sur "Je choisis une image de mon ordinateur" */
@@ -89,9 +87,9 @@ $(".delete-pic").on("click", function() {
   deletePicture(id);
 });
 
-$("#button-facebook-image").on("click", function() {
-  $("#dark-mask").fadeIn(200);
-});
+/* $("#button-facebook-image").on("click", function() {
+  $.getJSON()
+}); */
 
 /* Annuler la photo pré-upload */
 function cancelUpload() {

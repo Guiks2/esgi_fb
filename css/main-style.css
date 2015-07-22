@@ -95,7 +95,7 @@ hr {
 
 #photos-candidats {
 	position: relative;
-	width: 100%;
+	width: 50%;
 }
 
 .photo {
@@ -283,10 +283,21 @@ hr#contest-separator {
 
 #dark-mask {
 	position: fixed;
-	display: none;
 	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(0,0,0,0.5);
+	background: rgba(0,0,0,0.8);
+}
+
+.global-pic {
+	float: left;
+	background: rgba(0,0,0,0.7);
+	padding: 4px 20px 50px 20px;
+	margin: 0 10px 20px 10px;
+}
+
+.like {
+	display: block;
+	margin: 0 auto;
 }
