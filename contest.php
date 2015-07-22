@@ -77,7 +77,7 @@
         }   
         else {
             echo    '<div id="already-uploaded" class="container">
-                        <div class="uploaded-photo" style="background: url('.$res[3].'); background-size: cover; background-position: center center;></div>"
+                        <div class="uploaded-photo" style="background: url('.$res[3].'); background-size: cover; background-position: center center;"></div>
                         <div id="upload-infos">
                             <span class="your-pic">Votre photo participante</span>
                             <span class="delete-pic red-button">Enlever cette photo du concours</span>
