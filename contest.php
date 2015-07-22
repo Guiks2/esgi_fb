@@ -105,12 +105,10 @@
 
     $.getJSON("../getContestPictures.php", function(data) {
       $.each(data, function(index, value) {
-        console.log(value);
-
         isUrlExists(value[3], function(status){
             if(status === 200){
                // file was found
-               $("#photos-candidats").append("<div class='global-pic'><div class='photo' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div></div>");
+               $("#photos-candidats").append("<div class='global-pic'><div class='photo' data-id='"+value[0]+"' data-like='false' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div></div>");
             }
             else if(status === 404){
                // 404 not found

@@ -102,6 +102,7 @@ hr {
 	width: 680px;
 	margin: 0 auto;
 	overflow: auto;
+	padding-left: 56px;
 }
 
 .photo {
@@ -300,7 +301,6 @@ hr#contest-separator {
 .global-pic {
 	float: left;
 	background: rgba(0,0,0,0.7);
-	padding: 4px;
 	margin: 0 10px 20px 10px;
 }
 

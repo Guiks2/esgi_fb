@@ -88,6 +88,26 @@ $(".delete-pic").on("click", function() {
   deletePicture(id);
 });
 
+$(".photo").on("click", function() {
+  console.log($(this).attr("data-like"));
+  if($(this).attr("data-like") == "true"){
+
+  } else {
+    console.log("Test");
+    var id_pic = $(this).attr("data-id");
+    $.ajax({
+      type:     'POST',
+      url:      "../likeManager.php",
+      data:     {"id_pic": id_pic, "liked": "false"},
+      complete:  function(){
+        console.log("done");
+        $(this).attr("data-like", "true");
+      }
+   });
+  }
+
+});
+
 /* $("#button-facebook-image").on("click", function() {
   $.getJSON()
 }); */
@@ -102,9 +122,9 @@ function cancelUpload() {
 function isUrlExists(url, cb){
     try {
       $.ajax({
-          url:      url,
-          dataType: 'text',
-          type:     'GET',
+          url:       url,
+          dataType:  'text',
+          type:      'GET',
           complete:  function(xhr){
               if(typeof cb === 'function')
                  cb.apply(this, [xhr.status]);
@@ -120,9 +140,9 @@ function isUrlExists(url, cb){
 
 function deletePicture(id) {
   $.ajax({
-      type: "POST",
-      url: "../deletePicture.php",
-      data: {"id_pic": id}, 
+      type:   "POST",
+      url:    "../deletePicture.php",
+      data:   {"id_pic": id}, 
       complete: function() {
         top.location.href = '../contest.php';
       }
