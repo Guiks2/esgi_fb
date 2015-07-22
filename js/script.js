@@ -119,7 +119,7 @@ function deletePicture(id) {
   $.ajax({
       type: "POST",
       url: "../deletePicture.php",
-      data: {"id_pic": id} 
+      data: {"id_pic": id}, 
       success: function() {
         console.log("Hey");
       }
