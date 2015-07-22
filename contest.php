@@ -94,7 +94,7 @@
 
     $.getJSON("../getContestPictures.php", function(data) {
       $.each(data, function(index, value) {
-        coonsole.log(value);
+        console.log(value);
 
         isUrlExists(value[3], function(status){
             if(status === 200){
