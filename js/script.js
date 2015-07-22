@@ -89,6 +89,10 @@ $(".delete-pic").on("click", function() {
   deletePicture(id);
 });
 
+$("#button-facebook-image").on("click", function() {
+  $("#dark-mask").fadeIn(200);
+});
+
 /* Annuler la photo pré-upload */
 function cancelUpload() {
   $("#upload-infos").remove();

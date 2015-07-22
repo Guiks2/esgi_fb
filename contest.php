@@ -98,6 +98,7 @@
     </div>
     <center>* En participant à ce concours, je certifie à l'équipe Swag Pizza d'avoir au moins 18 ans ou d'avoir un accord parental. Offre valable dans la limite de la bonne volonté de l'équipe Swag Pizza.</center>
 
+    <div id="dark-mask"></div>
     <script src="js/script.js"></script>
     <script>
     CONTEST_PICTURES = {};

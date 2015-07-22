@@ -172,7 +172,7 @@ hr#contest-separator {
 	margin-top: 1px;
 	padding: 5px 10px;
 	width: 330px;
-	background-color: rgba(38,38,38,0.7);
+	background-color: rgba(38,38,38,0.9);
 	list-style: none;
 	display: none;
 	z-index: 5;
@@ -181,7 +181,7 @@ hr#contest-separator {
 
 #option-list li:hover {
 	cursor: pointer;
-	background-color: rgba(127,0,1, 0.7);
+	background-color: rgba(127,0,1, 0.9);
 }
 
 #add-new-album {
@@ -279,4 +279,14 @@ hr#contest-separator {
 	height: 250px;
 	border: dashed;
 	border-radius: 50%;
+}
+
+#dark-mask {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.5);
 }
