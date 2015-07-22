@@ -96,6 +96,7 @@ hr {
 #photos-candidats {
 	position: relative;
 	width: 50%;
+	margin: 0 auto;
 }
 
 .photo {
@@ -283,6 +284,7 @@ hr#contest-separator {
 
 #dark-mask {
 	position: fixed;
+	display: none;
 	top: 0;
 	left: 0;
 	width: 100vw;
