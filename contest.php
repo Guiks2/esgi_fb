@@ -77,13 +77,13 @@
         }   
         else {
             echo    '<div id="already-uploaded" class="container">
-                        <img src="'.$res[3].'" style="max-width: 400px; height: auto;"/>
+                        <img src="'.$res[3].'"/>
                         <div id="upload-infos">
                             <span>Votre photo participante</span>
                         </div>
                     </div>';
         }
-        
+
         ?>
         </div>
         

@@ -256,3 +256,16 @@ hr#contest-separator {
 	padding: 10px 20px;
 	cursor: pointer;
 }
+
+.already-uploaded {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.already-uploaded img {
+	display: inline-block; 
+	max-width: 250px; 
+	height: auto;
+	border: dashed;
+	border-radius: 50%;
+}
