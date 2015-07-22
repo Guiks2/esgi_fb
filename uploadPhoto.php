@@ -19,10 +19,8 @@ if(isset($_SESSION['fb_token'])) {
     $session = new FacebookSession($_SESSION['fb_token']);
 	if($_POST['album-id'] == -1){
         //$album_id = createAlbum($_POST['new_album_name'], $session, $id_user);
-        echo "Cas 1";
     } else{
         $album_id = $_POST['album-id'];
-        echo "Cas 2";
     }
     
     $curlFile = array('source' => new CURLFile($_FILES['browse-image']['tmp_name'], $_FILES['browse-image']['type']));
@@ -48,7 +46,7 @@ if(isset($_SESSION['fb_token'])) {
              echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
         }
 
-        echo "<script>top.location.href='contest.php;</script>";
+        echo "<script>top.location.href='contest.php';</script>";
     } catch (FacebookApiException $e) {
         error_log($e);
     }
