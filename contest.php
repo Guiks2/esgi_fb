@@ -33,7 +33,7 @@
         $existing_photo = false;
 
     $res = $result->fetch_all();
-    print_r($res);
+    $res = $res[0];
 ?>
 
 <!doctype html>
@@ -76,8 +76,14 @@
                     </div>';
         }   
         else {
-            echo    'Déjà fait';
+            echo    '<div id="already-uploaded" class="container">
+                        <img src="'.$res[3].'" style="max-width: 400px; height: auto;"/>
+                        <div id="upload-infos">
+                            <span>Votre photo participante</span>
+                        </div>
+                    </div>';
         }
+        
         ?>
         </div>
         
