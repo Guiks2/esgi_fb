@@ -10,6 +10,4 @@ if(isset($_SESSION['fb_token'])) {
     if (!($result = $mysqli->query($del_query))) {
        echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
     }
-
-    echo "<script>top.location.href='contest.php';</script>";
 }
