@@ -120,7 +120,7 @@ function deletePicture(id) {
       type: "POST",
       url: "../deletePicture.php",
       data: {"id_pic": id}, 
-      done: function() {
+      complete: function() {
         top.location.href = '../contest.php';
       }
   }); 
