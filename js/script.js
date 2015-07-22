@@ -74,3 +74,15 @@ function cancelUpload() {
   $("#upload-infos").remove();
   $("#dynamic-upload-zone").html('<div id="hide-button"><input type="file" name="browse-image" id="browse-image"></input></div><span id="button-browse-image" class="button-upload red-button">Je choisis une image de mon ordinateur...</span><br><span id="ou">OU</span><br><span id="button-facebook-image" class="button-upload red-button">Je choisis une image dans mes albums Facebook</span>');
 }
+
+function isUrlExists(url, cb){
+    jQuery.ajax({
+        url:      url,
+        dataType: 'text',
+        type:     'GET',
+        complete:  function(xhr){
+            if(typeof cb === 'function')
+               cb.apply(this, [xhr.status]);
+        }
+    });
+}

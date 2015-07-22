@@ -88,16 +88,26 @@
     </div>
     <center>* En participant à ce concours, je certifie à l'équipe Swag Pizza d'avoir au moins 18 ans ou d'avoir un accord parental. Offre valable dans la limite de la bonne volonté de l'équipe Swag Pizza.</center>
 
+    <script src="js/script.js"></script>
     <script>
     CONTEST_PICTURES = {};
 
     $.getJSON("../getContestPictures.php", function(data) {
       $.each(data, function(index, value) {
-        $("#photos-candidats").append("<div class='photo' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div>");
+        coonsole.log(value);
+
+        isUrlExists(value[3], function(status){
+            if(status === 200){
+               // file was found
+               $("#photos-candidats").append("<div class='photo' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div>");
+            }
+            else if(status === 404){
+               // 404 not found
+               console.log("ERROR");
+            }
+        });
       });
     });
     </script>
-    <script src="js/script.js"></script>
-
 </body>
 </html>
