@@ -49,15 +49,14 @@ $helper = new FacebookCanvasLoginHelper();
 
 try {
     $session = $helper->getSession();
-    var_dump($_SESSION);
     if($session){
         try {
-        $_SESSION["fb_token"] = $session->getToken();
-    } catch(FacebookRequestException $e) {
-        echo $e;
+            $_SESSION["fb_token"] = $session->getToken();
+        } catch(FacebookRequestException $e) {
+            echo $e;
+        }
+        var_dump($_SESSION);
     }
-}
-
 } catch(FacebookRequestException $ex) {
    echo $ex;   
 } catch(\Exception $ex) {
