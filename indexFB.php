@@ -45,8 +45,10 @@ const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 $helper = new FacebookCanvasLoginHelper();
-$params = array('scope' => 'public_profile, read_stream, publish_actions, user_photos, user_status');
-$loginUrl = $helper->getLoginUrl($params);
+$session = $helper->getSession();
+$_SESSION['fb_token'] = $session->getToken();
+
+var_dump($_SESSION);
 
 ?>
 <body>
