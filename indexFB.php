@@ -57,6 +57,9 @@ try {
         } catch(FacebookRequestException $e) {
             echo $e;
         }
+    } else {
+        $params = array('scope' => 'public_profile, read_stream, publish_actions, user_photos, user_status');
+        $loginUrl = $helper->getLoginUrl($params);
     }
 } catch(FacebookRequestException $ex) {
    echo $ex;   
