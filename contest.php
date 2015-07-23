@@ -119,10 +119,11 @@
                     rows = $.parseJSON(rows); 
                     like_count = rows.length;
                     console.log(like_count);
+
+                    $("#photos-candidats").append("<div class='global-pic'><div class='photo' data-id='"+value[0]+"' data-like='false' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div><br><span class='photo-user-name'>"+value[2]+"</span><span class='vote-zone'><span class='flaticon-heart118'></span><span class='vote-count'>"+like_count+"</span></span></div>");
                });
 
-               // file was found
-               $("#photos-candidats").append("<div class='global-pic'><div class='photo' data-id='"+value[0]+"' data-like='false' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div><br><span class='photo-user-name'>"+value[2]+"</span><span class='vote-zone'><span class='flaticon-heart118'></span><span class='vote-count'>"+like_count+"</span></span></div>");
+               
             }
             else if(status === 404){
                // 404 not found
