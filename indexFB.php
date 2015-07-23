@@ -46,16 +46,17 @@ const REDIRURL = "https://www.facebook.com/swagpizza/app_764343183684137";
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 $helper = new FacebookCanvasLoginHelper();
-
+echo "<br>".$_SERVER['HTTP_ORIGIN']."<br>";
 try {
     $session = $helper->getSession();
+    echo "$session:<br>";
+    var_dump($session);
     if($session){
         try {
-            $_SESSION["fb_token"] = $session->getToken();
+            $_SESSION['fb_token'] = (string)$session->getAccessToken();
         } catch(FacebookRequestException $e) {
             echo $e;
         }
-        var_dump($_SESSION);
     }
 } catch(FacebookRequestException $ex) {
    echo $ex;   
