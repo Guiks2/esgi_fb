@@ -89,7 +89,6 @@ $(".delete-pic").on("click", function() {
 });
 
 $(document).on("click", ".photo", function() {
-  alert("a");
   var id_pic = $(this).attr("data-id");
 
   if($(this).attr("data-like") == "true"){

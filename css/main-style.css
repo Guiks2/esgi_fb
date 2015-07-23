@@ -342,3 +342,8 @@ hr#contest-separator {
 .photo-user-name {
 	margin-left: 15px;
 }
+
+.vote-zone {
+	float: right;
+	margin-right: 15px;
+}
