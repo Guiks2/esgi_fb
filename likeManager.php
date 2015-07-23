@@ -20,18 +20,24 @@ $user_id_rq = new FacebookRequest($session, 'GET', '/me?fields=id');
 $user_id_rp = $user_id_rq->execute();
 $user_id = json_decode($user_id_rp->getRawResponse(), true);
 
-echo "Cas A";
 if(isset($_SESSION['fb_token'])) {
 	include("connectDB.php");
 	$photo_id = $_POST['id_pic'];
 	$user_id = $user_id['id'];
 	$liked = $_POST['liked'];
-	echo "Cas 2";
+	
+
 	if($liked == "false") {
-		$add_query = "INSERT INTO likes VALUES('".$photo_id."', '".$user_id."')";
+		$add_query = "INSERT IGNORE INTO likes VALUES('".$photo_id."', '".$user_id."')";
 		if (!($result = $mysqli->query($add_query))) {
 			echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
 		}
-		echo "Cas 3";
+	}
+
+	else {
+		$del_query = "DELETE FROM likes WHERE id_pic = ".$photo_id." AND id_user = ".$user_id;
+		if (!($result = $mysqli->query($del_query))) {
+			echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+		}
 	}
 }
