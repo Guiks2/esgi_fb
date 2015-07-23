@@ -20,8 +20,8 @@ ini_set("display_errors", 1);
 if(isset($_SESSION['fb_token'])) {
     include("connectDB.php");
     $id_pic = $_POST['id_pic'];
-    $sql = "SELECT * FROM likes WHERE id_pic = ".$id_pic;
-    if (!($result = $mysqli->query($id_pic))) {
+    $sql = "SELECT * FROM likes WHERE id_pic = '".$id_pic."'";
+    if (!($result = $mysqli->query($sql))) {
 		echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
 	}
 
