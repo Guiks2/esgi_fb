@@ -95,7 +95,7 @@ $(document).on("click", ".photo", function() {
     $.ajax({
       type:     'POST',
       url:      "../likeManager.php",
-      data:     {"id_pic": id_pic, "liked": "false"}
+      data:     {"id_pic": id_pic, "liked": "true"}
     });
     $(this).attr("data-like", "false");
     $(this).siblings(".vote-zone").css("color", "white");
