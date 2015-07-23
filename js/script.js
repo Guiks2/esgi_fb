@@ -99,6 +99,8 @@ $(document).on("click", ".photo", function() {
     });
     $(this).attr("data-like", "false");
     $(this).siblings(".vote-zone").css("color", "white");
+    var vote_count = $(this).siblings(".vote-zone").find(".vote-count");
+    vote_count.text(parseInt(vote_count.text() - 1));
   } else {
     $.ajax({
       type:     'POST',
@@ -107,6 +109,8 @@ $(document).on("click", ".photo", function() {
     });
     $(this).attr("data-like", "true");
     $(this).siblings(".vote-zone").css("color", "green");
+    var vote_count = $(this).siblings(".vote-zone").find(".vote-count");
+    vote_count.text(parseInt(vote_count.text() + 1));
   }
 });
 

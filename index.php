@@ -76,25 +76,6 @@ $loginUrl = $helper->getLoginUrl($params);
         </div>
 
         <hr>
-
-         <div id="container-child-3" class="container">
-            <p id="description-vote">
-                 Classement actuel
-            </p>
-            <div id="photos-candidats">
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <br/>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <br/>
-                <div class="photo"></div>
-                <div class="photo"></div>
-                <div class="photo"></div>
-            </div>
-        </div>
     </div>
     <center>* En participant à ce concours, je certifie à l'équipe Swag Pizza d'avoir au moins 18 ans ou d'avoir un accord parental. Offre valable dans la limite de la bonne volonté de l'équipe Swag Pizza.</center>
 
