@@ -90,18 +90,24 @@ $(".delete-pic").on("click", function() {
 
 $(document).on("click", ".photo", function() {
   alert("a");
+  var id_pic = $(this).attr("data-id");
+
   if($(this).attr("data-like") == "true"){
-    console.log("Oui");
-  } else {
-    console.log("Test");
-    var id_pic = $(this).attr("data-id");
     $.ajax({
       type:     'POST',
       url:      "../likeManager.php",
       data:     {"id_pic": id_pic, "liked": "false"}
     });
-    console.log("done");
+    $(this).attr("data-like", "false");
+    $(this).siblings(".vote-zone").css("color", "white");
+  } else {
+    $.ajax({
+      type:     'POST',
+      url:      "../likeManager.php",
+      data:     {"id_pic": id_pic, "liked": "false"}
+    });
     $(this).attr("data-like", "true");
+    $(this).siblings(".vote-zone").css("color", "green");
   }
 });
 
