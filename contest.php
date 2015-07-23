@@ -107,7 +107,7 @@
         isUrlExists(value[3], function(status){
             if(status === 200){
                // file was found
-               $("#photos-candidats").append("<div class='global-pic'><div class='photo' data-id='"+value[0]+"' data-like='false' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div><br><span class='photo-user-name'>"+value[2]+"</span></div>");
+               $("#photos-candidats").append("<div class='global-pic'><div class='photo' data-id='"+value[0]+"' data-like='false' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div><br><span class='photo-user-name'>"+value[2]+"</span><span class='vote-zone'><span class='flaticon-heart118'></span></span></div>");
             }
             else if(status === 404){
                // 404 not found
