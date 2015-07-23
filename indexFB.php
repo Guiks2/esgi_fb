@@ -47,22 +47,7 @@ FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 $helper = new FacebookCanvasLoginHelper();
 
-try {
-    $session = $helper->getSession();
-    var_dump($_SESSION);
-    if($session){
-        try {
-        $_SESSION["fb_token"] = $session->getToken();
-    } catch(FacebookRequestException $e) {
-        echo $e;
-    }
-}
-
-} catch(FacebookRequestException $ex) {
-   echo $ex;   
-} catch(\Exception $ex) {
-   $loginUrl = "https://www.facebook.com/dialog/oauth?client_id=".APPID."&redirect_uri="REDIRURL; 
-}
+var_dump($_SERVER['HTTP_ORIGIN']);
 
 ?>
 <body>
