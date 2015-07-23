@@ -88,7 +88,7 @@ try {
         </div>
         
         <div id="container-child-2" class="container">
-        	<a href="<?php echo $loginUrl; ?>" class="red-button">JE PARTICIPE !</a>
+        	<a href="<?php echo $loginUrl; ?>" class="red-button" target="_top">JE PARTICIPE !</a>
         </div>
 
         <hr>
