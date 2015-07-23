@@ -41,14 +41,31 @@ use Facebook\FacebookCanvasLoginHelper;
 
 const APPID = "764343183684137";
 const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
+const REDIRURL = "https://www.facebook.com/swagpizza/app_764343183684137"
 
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 $helper = new FacebookCanvasLoginHelper();
-$session = $helper->getSession();
-$_SESSION['fb_token'] = $session->getToken();
 
-var_dump($_SESSION);
+try {
+    $session = $helper->getSession();
+    if($session){
+        try {
+        $_SESSION["fb_token"] = $session->getToken();
+
+        $facebook_profile = (new FacebookRequest(
+            $session, 'GET', '/me'
+        ))->execute()->getGraphObject(GraphUser::className());
+        echo $facebook_profile->getName;
+    } catch(FacebookRequestException $e) {
+    }
+}
+
+} catch(FacebookRequestException $ex) {
+   echo $ex;   
+} catch(\Exception $ex) {
+   $loginUrl = "https://www.facebook.com/dialog/oauth?client_id=".APPID."&redirect_uri="REDIRURL; 
+}
 
 ?>
 <body>
