@@ -90,6 +90,21 @@ $(".delete-pic").on("click", function() {
 
 $(document).on("click", ".photo", function() {
   alert("a");
+  if($(this).attr("data-like") == "true"){
+    console.log("Oui");
+  } else {
+    console.log("Test");
+    var id_pic = $(this).attr("data-id");
+    $.ajax({
+      type:     'POST',
+      url:      "../likeManager.php",
+      data:     {"id_pic": id_pic, "liked": "false"},
+      complete:  function(){
+        console.log("done");
+        $(this).attr("data-like", "true");
+      }
+   });
+  }
 });
 
 /* $("#button-facebook-image").on("click", function() {
