@@ -13,27 +13,31 @@
     const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 
     FacebookSession::setDefaultApplication(APPID, APPSECRET);
-    $session = new FacebookSession($_SESSION['fb_token']);
+    if(isset($_SESSION['fb_token'])) {  
+        $session = new FacebookSession($_SESSION['fb_token']);
 
-    $user_id_rq = new FacebookRequest($session, 'GET', '/me?fields=id');
-    $user_id_rp = $user_id_rq->execute();
-    $user_id = json_decode($user_id_rp->getRawResponse(), true);
+        $user_id_rq = new FacebookRequest($session, 'GET', '/me?fields=id');
+        $user_id_rp = $user_id_rq->execute();
+        $user_id = json_decode($user_id_rp->getRawResponse(), true);
 
-    include("connectDB.php");
-    $id_query = "SELECT * FROM pictures WHERE id_owner = '".$user_id["id"]."'";
+        include("connectDB.php");
+        $id_query = "SELECT * FROM pictures WHERE id_owner = '".$user_id["id"]."'";
 
-    if (!($result = $mysqli->query($id_query))) {
-        echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+        if (!($result = $mysqli->query($id_query))) {
+            echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+        }
+
+        $num_rows = $result->num_rows;
+        if($num_rows)
+            $existing_photo = true;
+        else
+            $existing_photo = false;
+
+        $res = $result->fetch_all();
+        $res = $res[0];
+    } else {
+        echo "<script>top.location.href='index.php';</script>";
     }
-
-    $num_rows = $result->num_rows;
-    if($num_rows)
-        $existing_photo = true;
-    else
-        $existing_photo = false;
-
-    $res = $result->fetch_all();
-    $res = $res[0];
 ?>
 
 <!doctype html>
