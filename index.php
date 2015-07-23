@@ -45,6 +45,10 @@ const APPSECRET = "56ec8f41e39c835873b223320ffdfcae";
 FacebookSession::setDefaultApplication(APPID, APPSECRET);
 
 $helper = new FacebookRedirectLoginHelper('https://esgi-fb.herokuapp.com/callback.php');
+
+if(isset($_SERVER['HTTP_ORIGIN']))
+    $_SESSION['canvas'] = 1;
+
 $params = array('scope' => 'public_profile, read_stream, publish_actions, user_photos, user_status');
 $loginUrl = $helper->getLoginUrl($params);
 
@@ -68,7 +72,7 @@ $loginUrl = $helper->getLoginUrl($params);
         </div>
         
         <div id="container-child-2" class="container">
-        	<a href="<?php echo $loginUrl; ?>" class="red-button">JE PARTICIPE !</a>
+        	<a href="<?php echo $loginUrl; ?>" class="red-button" target="_top">JE PARTICIPE !</a>
         </div>
 
         <hr>
