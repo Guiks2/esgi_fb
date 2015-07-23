@@ -35,7 +35,7 @@ if(isset($_SESSION['fb_token'])) {
 	}
 
 	else {
-		$del_query = "DELETE FROM likes WHERE id_pic = '".$photo_id."' AND id_user = '".$user_id."'";
+		$del_query = "DELETE FROM likes WHERE id_pic = '".$photo_id."' AND 'id_user' = '".$user_id."'";
 		if (!($result = $mysqli->query($del_query))) {
 			echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
 		}
