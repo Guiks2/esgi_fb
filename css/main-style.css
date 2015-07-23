@@ -277,7 +277,7 @@ hr#contest-separator {
 #already-uploaded .delete-pic{
 	display: block;
 	margin-top: 20px;
-	font-size: 22px;
+	font-size: 15px;
 }
 
 #already-uploaded .uploaded-photo {
@@ -302,6 +302,7 @@ hr#contest-separator {
 	float: left;
 	background: rgba(0,0,0,0.7);
 	margin: 0 10px 20px 10px;
+	height: 180px;
 }
 
 .like {
