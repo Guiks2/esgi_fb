@@ -98,12 +98,10 @@ $(document).on("click", ".photo", function() {
     $.ajax({
       type:     'POST',
       url:      "../likeManager.php",
-      data:     {"id_pic": id_pic, "liked": "false"},
-      complete:  function(){
-        console.log("done");
-        $(this).attr("data-like", "true");
-      }
-   });
+      data:     {"id_pic": id_pic, "liked": "false"}
+    });
+    console.log("done");
+    $(this).attr("data-like", "true");
   }
 });
 

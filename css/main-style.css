@@ -312,7 +312,7 @@ hr#contest-separator {
 	display: inline-block; 
 	width: 250px; 
 	height: 250px;
-	border: dashed;
+	border: solid 5px white;
 	border-radius: 50%;
 }
 
