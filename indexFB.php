@@ -49,15 +49,12 @@ $helper = new FacebookCanvasLoginHelper();
 
 try {
     $session = $helper->getSession();
+    var_dump($_SESSION);
     if($session){
         try {
         $_SESSION["fb_token"] = $session->getToken();
-
-        $facebook_profile = (new FacebookRequest(
-            $session, 'GET', '/me'
-        ))->execute()->getGraphObject(GraphUser::className());
-        echo $facebook_profile->getName;
     } catch(FacebookRequestException $e) {
+        echo $e;
     }
 }
 
