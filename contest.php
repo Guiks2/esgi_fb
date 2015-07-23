@@ -116,7 +116,9 @@
                     url: "../countLikes.php",
                     data: {"id_pic": value[0]}
                }).success(function(rows){
-                    console.log(rows);
+                    rows = $.parseJSON(rows); 
+                    like_count = rows.length;
+                    console.log(like_count);
                });
 
                // file was found
