@@ -110,14 +110,13 @@
       $.each(data, function(index, value) {
         isUrlExists(value[3], function(status){
             if(status === 200){
-                var like_count = 0;
                $.ajax({
                     type: "POST",
                     url: "../countLikes.php",
                     data: {"id_pic": value[0]}
                }).success(function(rows){
                     rows = $.parseJSON(rows); 
-                    like_count = rows.length;
+                    var like_count = rows.length;
                     console.log(like_count);
 
                     $("#photos-candidats").append("<div class='global-pic'><div class='photo' data-id='"+value[0]+"' data-like='false' style='background: url("+value[3]+"); background-size: cover; background-position: center center;'></div><br><span class='photo-user-name'>"+value[2]+"</span><span class='vote-zone'><span class='flaticon-heart118'></span><span class='vote-count'>"+like_count+"</span></span></div>");
